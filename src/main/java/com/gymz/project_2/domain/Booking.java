@@ -1,0 +1,65 @@
+package com.gymz.project_2.domain;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Booking {
+    @Id
+    @Column(length = 6, nullable = false, unique = true)
+    private long booking_id;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    @ManyToOne
+    @JoinColumn(name = "session_id")
+    private Session session;
+
+    private LocalDate booking_date;
+
+    public long getBooking_id() {
+        return booking_id;
+    }
+
+    public void setBooking_id(long booking_id) {
+        this.booking_id = booking_id;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    public LocalDate getBooking_date() {
+        return booking_date;
+    }
+
+    public void setBooking_date(LocalDate booking_date) {
+        this.booking_date = booking_date;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking [booking_id=" + booking_id + ", member=" + member + ", session=" + session + ", booking_date="
+                + booking_date + "]";
+    }
+
+}
