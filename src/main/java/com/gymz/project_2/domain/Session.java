@@ -20,7 +20,7 @@ public class Session {
     private long session_id;
 
     @Column(nullable = false)
-    private LocalDate session_Date;
+    private String session_Date;
 
     @Column(nullable = false)
     private LocalDate start_time;
@@ -47,11 +47,11 @@ public class Session {
         this.session_id = session_id;
     }
 
-    public LocalDate getSession_Date() {
+    public String getSession_Date() {
         return session_Date;
     }
 
-    public void setSession_Date(LocalDate session_Date) {
+    public void setSession_Date(String session_Date) {
         this.session_Date = session_Date;
     }
 
@@ -79,10 +79,26 @@ public class Session {
         this.bookings = bookings;
     }
 
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Pt getPt() {
+        return pt;
+    }
+
+    public void setPt(Pt pt) {
+        this.pt = pt;
+    }
+
     @Override
     public String toString() {
         return "Session [session_id=" + session_id + ", session_Date=" + session_Date + ", start_time=" + start_time
-                + ", end_time=" + end_time + ", bookings=" + bookings + "]";
+                + ", end_time=" + end_time + ", bookings=" + bookings + ", course=" + course + ", pt=" + pt + "]";
     }
 
 }

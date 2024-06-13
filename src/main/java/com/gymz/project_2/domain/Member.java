@@ -8,7 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -34,7 +35,11 @@ public class Member {
     private List<Feedback> feedbacks;
 
     @OneToMany(mappedBy = "member")
-    private List<OptionGym> ops;
+    private List<Payment> payments;
+
+    @ManyToOne
+    @JoinColumn(name = "op_id")
+    private OptionGym op;
 
     public long getMember_id() {
         return member_id;
@@ -84,18 +89,27 @@ public class Member {
         this.feedbacks = feedbacks;
     }
 
-    public List<OptionGym> getOps() {
-        return ops;
+    public OptionGym getOp() {
+        return op;
     }
 
-    public void setOps(List<OptionGym> ops) {
-        this.ops = ops;
+    public void setOp(OptionGym op) {
+        this.op = op;
+    }
+
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
 
     @Override
     public String toString() {
         return "Member [member_id=" + member_id + ", name=" + name + ", phoneNumber=" + phoneNumber + ", date_joined="
-                + date_joined + ", booking=" + booking + ", feedbacks=" + feedbacks + ", ops=" + ops + "]";
+                + date_joined + ", booking=" + booking + ", feedbacks=" + feedbacks + ", payments=" + payments + ", op="
+                + op + "]";
     }
 
 }

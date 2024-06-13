@@ -1,18 +1,25 @@
-// package com.gymz.project_2.service;
+package com.gymz.project_2.service;
 
-// import java.util.List;
+import java.util.List;
 
-// import com.gymz.project_2.repository.AccountRepository;
+import org.springframework.stereotype.Service;
 
-// public class AccountService {
-// private final AccountRepository accountRepository;
+import com.gymz.project_2.domain.Account;
+import com.gymz.project_2.repository.AccountRepository;
 
-// public AccountService(AccountRepository accountRepository) {
-// this.accountRepository = accountRepository;
-// }
+@Service
+public class AccountService {
+    private final AccountRepository accountRepository;
 
-// public List<Object> getAllAccounts() {
-// return accountRepository.getAllAccounts();
-// }
+    public AccountService(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
 
-// }
+    public Account handleSaveAccount(Account acc) {
+        return this.accountRepository.save(acc);
+    }
+
+    public List<Account> getAllAccount() {
+        return this.accountRepository.findAll();
+    }
+}

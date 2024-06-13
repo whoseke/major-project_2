@@ -1,6 +1,6 @@
 package com.gymz.project_2.domain;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -21,14 +21,16 @@ public class Course {
     @Column(length = 100, nullable = false)
     private String name;
 
+    @Column(length = 10, nullable = false)
+    private BigDecimal price;
+
     @OneToMany(mappedBy = "course")
     private List<Feedback> feedbacks;
 
     @OneToMany(mappedBy = "course")
     private List<Session> sessions;
 
-    private LocalDate start_day;
-    private LocalDate end_Date;
+    private float duration;
 
     public long getCourse_id() {
         return course_id;
@@ -44,22 +46,6 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public LocalDate getStart_day() {
-        return start_day;
-    }
-
-    public void setStart_day(LocalDate start_day) {
-        this.start_day = start_day;
-    }
-
-    public LocalDate getEnd_Date() {
-        return end_Date;
-    }
-
-    public void setEnd_Date(LocalDate end_Date) {
-        this.end_Date = end_Date;
     }
 
     public List<Feedback> getFeedbacks() {
@@ -78,10 +64,26 @@ public class Course {
         this.sessions = sessions;
     }
 
+    public float getDuration() {
+        return duration;
+    }
+
+    public void setDuration(float duration) {
+        this.duration = duration;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
-        return "Course [course_id=" + course_id + ", name=" + name + ", feedbacks=" + feedbacks + ", sessions="
-                + sessions + ", start_day=" + start_day + ", end_Date=" + end_Date + "]";
+        return "Course [course_id=" + course_id + ", name=" + name + ", price=" + price + ", feedbacks=" + feedbacks
+                + ", sessions=" + sessions + ", duration=" + duration + "]";
     }
 
 }

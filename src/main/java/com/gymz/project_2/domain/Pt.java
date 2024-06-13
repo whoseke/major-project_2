@@ -20,6 +20,9 @@ public class Pt {
     @Column(length = 100, nullable = false)
     private String name;
 
+    @Column(length = 10, nullable = false)
+    private String phoneNumber;
+
     @Column(length = 30, nullable = false)
     private String specialization;
 
@@ -80,10 +83,19 @@ public class Pt {
         this.sessions = sessions;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     @Override
     public String toString() {
-        return "Pt [pt_id=" + pt_id + ", name=" + name + ", specialization=" + specialization + ", experience_year="
-                + experience_year + ", date_joined=" + date_joined + ", sessions=" + sessions + "]";
+        return "Pt [pt_id=" + pt_id + ", name=" + name + ", phoneNumber=" + phoneNumber + ", specialization="
+                + specialization + ", experience_year=" + experience_year + ", date_joined=" + date_joined
+                + ", sessions=" + sessions + "]";
     }
 
 }

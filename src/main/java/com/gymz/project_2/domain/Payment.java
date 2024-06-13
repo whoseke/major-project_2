@@ -19,13 +19,13 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "member_id")
-    private Member member_id;
+    private Member member;
 
     @ManyToOne
     @JoinColumn(name = "op_id", referencedColumnName = "op_id")
-    private OptionGym op_id;
+    private OptionGym op;
 
-    private LocalDate paymenDate;
+    private LocalDate paymentDate;
 
     public long getPayment_id() {
         return payment_id;
@@ -35,34 +35,34 @@ public class Payment {
         this.payment_id = payment_id;
     }
 
-    public Member getMember_id() {
-        return member_id;
+    public Member getMember() {
+        return member;
     }
 
-    public void setMember_id(Member member_id) {
-        this.member_id = member_id;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
-    public OptionGym getOp_id() {
-        return op_id;
+    public OptionGym getOp() {
+        return op;
     }
 
-    public void setOp_id(OptionGym op_id) {
-        this.op_id = op_id;
+    public void setOp(OptionGym op) {
+        this.op = op;
     }
 
-    public LocalDate getPaymenDate() {
-        return paymenDate;
+    public LocalDate getPaymentDate() {
+        return paymentDate;
     }
 
-    public void setPaymenDate(LocalDate paymenDate) {
-        this.paymenDate = paymenDate;
+    public void setPaymentDate(LocalDate paymentDate) {
+        this.paymentDate = paymentDate;
     }
 
     @Override
     public String toString() {
-        return "Payment [payment_id=" + payment_id + ", member_id=" + member_id + ", op_id=" + op_id + ", paymenDate="
-                + paymenDate + "]";
+        return "Payment [payment_id=" + payment_id + ", member=" + member + ", op=" + op + ", paymentDate="
+                + paymentDate + "]";
     }
 
 }

@@ -1,3 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,26 +20,22 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-12 mx-auto">
-                <h3> Create a user</h3>
+                <h3> Tạo khoá học:</h3>
                 <hr/>
-                <form:form method="post" action="/admin/user/create1" modelAttribute="newAccount">
-                    <div class="mb-3">
-                        <div class="form-label">User:</div>
-                        <form:input type="text" class="form-control" path="user"/>
+                <form:form method="post" action="/create/createCourse" modelAttribute="newCourse">
+
+                    <div class="form-group">
+                        <label for="name">Tên khoá học:</label>
+                        <form:input type ="text" class="form-control" path="name"/>
                     </div>
 
-                    <div class="mb-3">
-                        <div class="form-label">Password:</div>
-                        <form:input type="password" class="form-control" path="password"/>
+                    <div class="form-group">
+                        <label for="duration">Thời gian: </label>
+                        <form:input type="duration" class="form-control" path="duration"></form:input>
                     </div>
 
-                    <div class="mb-3">
-                        <div class="form-label">Role:</div>
-                        <form:input type="text" class="form-control" path="role"/>
-                    </div>
-
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Create</button>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Tạo</button>
                     </div>
                 </form:form>
             </div>
