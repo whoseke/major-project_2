@@ -14,7 +14,7 @@
 <body>
     <div class="container mt-5">
         <div class = "row">
-            <div class=" col-12 mx-auto">
+            <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
                     <h3>Thông tin buổi tập</h3>
                     <a href="/create/session" class="btn btn-primary">Tạo tài khoản </a>
@@ -37,11 +37,20 @@
                             <td>${s.pt.pt_id}</td>
                             <td>${s.start_time}</td>
                             <td>${s.end_time}</td>
+                            <td>
+                                <a href="/update/session/${s.session_id}" 
+                                class="btn btn-warning mx-2">Update</a>
+                                <a href="/delete/session/${s.session_id}" 
+                                onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
+                                class="btn btn-danger">Delete</a>                            
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
     </div>
+    <%@ include file="../layout.jsp" %>
+
 </body>
 </html>

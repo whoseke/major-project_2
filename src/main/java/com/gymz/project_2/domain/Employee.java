@@ -1,12 +1,15 @@
 package com.gymz.project_2.domain;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Employee {
@@ -23,6 +26,9 @@ public class Employee {
 
     @Column(length = 10, nullable = false)
     private BigDecimal salary;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    List<Shift> shifts;
 
     public long getEmployee_id() {
         return employee_id;

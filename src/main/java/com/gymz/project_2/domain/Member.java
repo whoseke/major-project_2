@@ -3,6 +3,7 @@ package com.gymz.project_2.domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,13 +29,13 @@ public class Member {
     @Column(nullable = false)
     private LocalDate date_joined;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Booking> booking;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Feedback> feedbacks;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Payment> payments;
 
     @ManyToOne
@@ -89,14 +90,6 @@ public class Member {
         this.feedbacks = feedbacks;
     }
 
-    public OptionGym getOp() {
-        return op;
-    }
-
-    public void setOp(OptionGym op) {
-        this.op = op;
-    }
-
     public List<Payment> getPayments() {
         return payments;
     }
@@ -105,11 +98,18 @@ public class Member {
         this.payments = payments;
     }
 
+    public OptionGym getOp() {
+        return op;
+    }
+
+    public void setOp(OptionGym op) {
+        this.op = op;
+    }
+
     @Override
     public String toString() {
         return "Member [member_id=" + member_id + ", name=" + name + ", phoneNumber=" + phoneNumber + ", date_joined="
-                + date_joined + ", booking=" + booking + ", feedbacks=" + feedbacks + ", payments=" + payments + ", op="
-                + op + "]";
+                + date_joined + "]";
     }
 
 }

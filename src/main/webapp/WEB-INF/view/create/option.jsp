@@ -34,16 +34,6 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="start_time">Từ ngày:</label>
-                        <form:input type ="date" path="start_time" class="form-control"/>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="end_time">Đến ngày:</label>
-                        <form:input type ="date" path="end_time" class="form-control"/>
-                    </div>
-    
-                    <div class="form-group">
                         <label for="price">Giá:</label>
                         <form:input type ="text" path="price" class="form-control"/>
                     </div>

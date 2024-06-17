@@ -15,54 +15,51 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Custom CSS -->
+    
 </head>
-<body>
+<body class="common-page">
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-12 mx-auto">
-                <h3> Tạo buổi tập</h3>
+                <h3> Thanh toán:</h3>
                 <hr/>
-                <form:form method="post" action="/create/createSession" modelAttribute="newSession">
-
-                    
+                <form:form method="post" action="/update/payment" modelAttribute="newPayment">
                     <div class="form-group">
-                        <label for="course">Mã khoá học:</label>
-                        <form:select path="course" class="form-control">
+                        <label for="payment_id">Mã thanh toán:</label>
+                        <form:input path="payment_id" class="form-control" readonly="true"/>
+                    </div>    
+
+                    <div class="form-group">
+                        <label for="member">Mã hội viên:</label>
+                        <form:select path="member" class="form-control">
                             <form:option value="" label="-- Chọn --"/>
-                            <c:forEach items="${course}" var="course">
-                                <form:option value="${course_id}" label="${course.name}"/>
+                            <c:forEach items="${member}" var="member">
+                                <form:option value="${member.member_id}" label="${member.name}"/>
                             </c:forEach>
                         </form:select>
                     </div>
 
                     <div class="form-group">
-                        <label for="session_Date">Ngày tập:</label>
-                        <form:input type ="date" path="session_Date" class="form-control"/>
+                        <label for="op">Gói tập:</label>
+                        <form:select path="op" class="form-control">
+                            <form:option value="" label="-- Chọn --"/>
+                            <c:forEach items="${op}" var="option">
+                                <form:option value="${option.op_id}" label="${option.name}"/>
+                            </c:forEach>
+                        </form:select>
                     </div>
-
-                <div class="form-group">
-                    <label for="pt"> PT:</label>
-                    <form:select path="pt" class="form-control">
-                        <form:option value="" label="-- Chọn --"/>
-                        <c:forEach items="${pt}" var="pt">
-                            <form:option value="${pt_id}" label="${pt.name}"/>
-                        </c:forEach>
-                    </form:select>
-                </div>
-                   
-                <div class="form-group">
-                    <label for="start_time">Bắt đầu:</label>
-                    <form:input type ="time" path="start_time" class="form-control"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="end_time">Kết thúc:</label>
-                    <form:input type ="time" path="end_time" class="form-control"/>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Tạo</button>
-                </div>
+                  
+                    <div class="form-group">
+                        <label for="paymentDate">Ngày thanh toán:</label>
+                        <form:input type="text" path="paymentDate" class="form-control" readonly="true"/>
+                        <form:input type="date" path="paymentDate" class="form-control"/>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Tạo</button>
+                    </div>
                 </form:form>
             </div>
         </div>

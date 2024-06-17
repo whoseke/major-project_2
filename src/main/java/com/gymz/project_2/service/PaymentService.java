@@ -22,4 +22,12 @@ public class PaymentService {
     public List<Payment> getAllPayment() {
         return this.paymentRepository.findAll();
     }
+
+    public Payment getpPaymentByID(long id) {
+        return this.paymentRepository.findById(id);
+    }
+
+    public void deletePaymentById(long id) {
+        this.paymentRepository.deleteById(id);
+    }
 }

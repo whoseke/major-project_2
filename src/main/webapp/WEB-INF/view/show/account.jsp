@@ -13,29 +13,45 @@
 </head>
 <body>
     <div class="container mt-5">
-        <div class = "row">
-            <div class=" col-12 mx-auto">
+        <div class="row">
+            <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
                     <h3>Thông tin tài khoản</h3>
-                    <a href="/create/account" class="btn btn-primary">Tạo tài khoản </a>
+                    <a href="/create/account" class="btn btn-primary">Tạo tài khoản</a>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
                     <tr>
+                        <th>ID</th>
                         <th>Tên đăng nhập</th>
                         <th>Mật khẩu</th>
                         <th>Loại tài khoản</th>
                     </tr>
                     <c:forEach var="acc" items="${accounts}">
                         <tr>
+                            <td>${acc.account_id}</td>
                             <td>${acc.user}</td>
                             <td>${acc.password}</td>
                             <td>${acc.accountType}</td>
+                            <td>
+                                <a href="/update/account/${acc.account_id}" 
+                                class="btn btn-warning mx-2">Update</a>
+                                <!-- <a href="">
+                                    <button class="btn btn-danger">Delete</button>
+                                </a> -->
+                                <a href="/delete/account/${acc.account_id}" 
+                                onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
+                                class="btn btn-danger">Delete</a>
+                            
+                                
+
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
     </div>
+    <%@ include file="../layout.jsp" %>
 </body>
 </html>

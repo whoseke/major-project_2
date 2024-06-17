@@ -1,8 +1,10 @@
 package com.gymz.project_2.domain;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,15 +22,15 @@ public class Session {
     private long session_id;
 
     @Column(nullable = false)
-    private String session_Date;
+    private LocalDate session_Date;
 
     @Column(nullable = false)
-    private LocalDate start_time;
+    private LocalTime start_time;
 
     @Column(nullable = false)
-    private LocalDate end_time;
+    private LocalTime end_time;
 
-    @OneToMany(mappedBy = "session")
+    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
     @ManyToOne
@@ -47,27 +49,19 @@ public class Session {
         this.session_id = session_id;
     }
 
-    public String getSession_Date() {
-        return session_Date;
-    }
-
-    public void setSession_Date(String session_Date) {
-        this.session_Date = session_Date;
-    }
-
-    public LocalDate getStart_time() {
+    public LocalTime getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(LocalDate start_time) {
+    public void setStart_time(LocalTime start_time) {
         this.start_time = start_time;
     }
 
-    public LocalDate getEnd_time() {
+    public LocalTime getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(LocalDate end_time) {
+    public void setEnd_time(LocalTime end_time) {
         this.end_time = end_time;
     }
 
@@ -95,10 +89,18 @@ public class Session {
         this.pt = pt;
     }
 
+    public LocalDate getSession_Date() {
+        return session_Date;
+    }
+
+    public void setSession_Date(LocalDate session_Date) {
+        this.session_Date = session_Date;
+    }
+
     @Override
     public String toString() {
         return "Session [session_id=" + session_id + ", session_Date=" + session_Date + ", start_time=" + start_time
-                + ", end_time=" + end_time + ", bookings=" + bookings + ", course=" + course + ", pt=" + pt + "]";
+                + ", end_time=" + end_time + "]";
     }
 
 }

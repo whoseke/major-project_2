@@ -14,7 +14,7 @@
 <body>
     <div class="container mt-5">
         <div class = "row">
-            <div class=" col-12 mx-auto">
+            <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
                     <h3>Thông tin gói tập</h3>
                     <a href="/create/option" class="btn btn-primary">Tạo gói tập </a>                 
@@ -25,8 +25,6 @@
                         <th>Mã gói tập</th>
                         <th>Tên gói tập</th>
                         <th>Thời hạn</th>
-                        <th>Từ ngày</th>
-                        <th>Đến ngày</th>
                         <th>Mức giá </th>
                     </tr>
                     <c:forEach var="op" items="${options}">
@@ -35,15 +33,19 @@
                             <td>${op.name}</td>
                             <td>${op.duration}</td>
                             <td>${op.duration}</td>
-                            <td>${op.start_time}</td>
-                            <td>${op.end_time}</td>
                             <td>${op.price}</td>
-
-                        </tr>
+                            <td><a href="/update/option/${op.op_id}" 
+                                class="btn btn-warning mx-2">Update</a>
+                                <a href="/delete/member/${op.op_id}" 
+                                onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
+                                class="btn btn-danger">Delete</a>                        
+                            </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
     </div>
+    <%@ include file="../layout.jsp" %>
+
 </body>
 </html>

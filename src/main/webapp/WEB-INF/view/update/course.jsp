@@ -20,9 +20,14 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-12 mx-auto">
-                <h3> Tạo khoá học:</h3>
+                <h3> Cập nhật khoá học</h3>
                 <hr/>
-                <form:form method="post" action="/create/createCourse" modelAttribute="newCourse">
+                <form:form method="post" action="/update/course" modelAttribute="newCourse">
+
+                    <div class="form-group">
+                        <label for="course_id">Mã khoá học:</label>
+                        <form:input type ="text" class="form-control" path="course_id" readonly="true"/>
+                    </div>
 
                     <div class="form-group">
                         <label for="name">Tên khoá học:</label>

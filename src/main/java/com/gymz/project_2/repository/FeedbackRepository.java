@@ -9,4 +9,7 @@ import com.gymz.project_2.domain.Feedback;
 public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
     Feedback save(Feedback feedback);
 
+    Feedback findById(long id);
+
+    void deleteById(long id);
 }

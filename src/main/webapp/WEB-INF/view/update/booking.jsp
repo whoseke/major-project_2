@@ -20,49 +20,44 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-12 mx-auto">
-                <h3> Tạo buổi tập</h3>
+                <h3> Cập nhật đặt lịch</h3>
                 <hr/>
-                <form:form method="post" action="/create/createSession" modelAttribute="newSession">
-
-                    
+                <form:form method="post" action="/update/booking" modelAttribute="newBooking">
                     <div class="form-group">
-                        <label for="course">Mã khoá học:</label>
-                        <form:select path="course" class="form-control">
+                        <label for="booking_id">Mã đặt lịch:</label>
+                        <form:input path="booking_id" class="form-control" readonly="true" />
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="member">Mã hội viên:</label>
+                        <form:select path="member" class="form-control">
                             <form:option value="" label="-- Chọn --"/>
-                            <c:forEach items="${course}" var="course">
-                                <form:option value="${course_id}" label="${course.name}"/>
+                            <c:forEach items="${member}" var="member">
+                                <form:option value="${member.member_id}" label="${member.name}"/>
                             </c:forEach>
                         </form:select>
                     </div>
 
                     <div class="form-group">
-                        <label for="session_Date">Ngày tập:</label>
-                        <form:input type ="date" path="session_Date" class="form-control"/>
+                        <label for="session">Mã buổi tập:</label>
+                        <form:select path="session" class="form-control">
+                            <form:option value="" label="-- Chọn --"/>
+                            <c:forEach items="${session}" var="session">
+                                <form:option value="${session.session_id}" label="${session.session_Date}"/>
+                               
+                            </c:forEach>
+                        </form:select>
                     </div>
 
-                <div class="form-group">
-                    <label for="pt"> PT:</label>
-                    <form:select path="pt" class="form-control">
-                        <form:option value="" label="-- Chọn --"/>
-                        <c:forEach items="${pt}" var="pt">
-                            <form:option value="${pt_id}" label="${pt.name}"/>
-                        </c:forEach>
-                    </form:select>
-                </div>
-                   
-                <div class="form-group">
-                    <label for="start_time">Bắt đầu:</label>
-                    <form:input type ="time" path="start_time" class="form-control"/>
-                </div>
+                    <div class="form-group">
+                        <label for="booking_date">Ngày:</label>
+                        <form:input type ="text" path="booking_date" class="form-control" readonly="true"/>
+                        <form:input type ="date" path="booking_date" class="form-control"/>
+                    </div>
 
-                <div class="form-group">
-                    <label for="end_time">Kết thúc:</label>
-                    <form:input type ="time" path="end_time" class="form-control"/>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Tạo</button>
-                </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Tạo</button>
+                    </div>
                 </form:form>
             </div>
         </div>

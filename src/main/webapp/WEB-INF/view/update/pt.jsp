@@ -20,33 +20,38 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-12 mx-auto">
-                <h3> Tạo khoá học:</h3>
+                <h3> Cập nhật PT </h3>
                 <hr/>
-                <form:form method="post" action="/create/createCourse" modelAttribute="newCourse">
+                <form:form method="post" action="/update/pt" modelAttribute="newPT">
+                    <div class="form-group">
+                        <label for="pt_id">Mã pt:</label>
+                        <form:input path="pt_id" class="form-control" readonly="true"/>
+                    </div>    
 
                     <div class="form-group">
-                        <label for="name">Tên khoá học:</label>
-                        <form:input type ="text" class="form-control" path="name"/>
+                        <label for="name">Họ và tên:</label>
+                        <form:input path="name" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="duration">Thời gian: </label>
-                        <form:input type="duration" class="form-control" path="duration"></form:input>
+                        <label for="specialization">Chuyên môn:</label>
+                        <form:input type ="specialization" path="specialization" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="start_date">Từ ngày:</label>
-                        <form:input type ="date" path="start_date" class="form-control"/>
+                        <label for="phoneNumber">SDT:</label>
+                        <form:input type ="phoneNumber" path="phoneNumber" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="end_date">Đến ngày:</label>
-                        <form:input type ="date" path="end_date" class="form-control"/>
+                        <label for="experience_year">Năm kinh nghiệm:</label>
+                        <form:input type ="experience_year" path="experience_year" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="price">Giá tiền:</label>
-                        <form:input type="text" path="price" class="form-control"></form:input>
+                        <label for="date_joined">Ngày vào làm:</label>
+                        <form:input type ="text" path="date_joined" class="form-control" readonly="true"/>
+                        <form:input type ="date" path="date_joined" class="form-control"/>
                     </div>
 
                     <div class="form-group">

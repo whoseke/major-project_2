@@ -2,8 +2,11 @@ package com.gymz.project_2.domain;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -11,14 +14,15 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Booking {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 6, nullable = false, unique = true)
     private long booking_id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "session_id")
     private Session session;
 
@@ -58,8 +62,7 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking [booking_id=" + booking_id + ", member=" + member + ", session=" + session + ", booking_date="
-                + booking_date + "]";
+        return "Booking [booking_id=" + booking_id + ", booking_date=" + booking_date + "]";
     }
 
 }

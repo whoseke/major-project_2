@@ -8,9 +8,10 @@ import org.springframework.ui.Model;
 import com.gymz.project_2.domain.Pt;
 import com.gymz.project_2.service.PtService;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PtController {
@@ -20,23 +21,50 @@ public class PtController {
         this.ptService = ptService;
     }
 
-    @RequestMapping("/create/pt")
+    @GetMapping("/create/pt")
     public String createPt(Model model) {
         model.addAttribute("newPT", new Pt());
         return "create/pt";
     }
 
-    @RequestMapping(value = "/create/createPT", method = RequestMethod.POST)
+    @PostMapping(value = "/create/createPT")
     public String getPt(Model model, @ModelAttribute("newPT") Pt pt) {
         this.ptService.handlePt(pt);
         return "redirect:/info/pt";
     }
 
-    @RequestMapping("/info/pt")
+    @GetMapping("/info/pt")
     public String showPt(Model model) {
         List<Pt> pts = this.ptService.getAllPt();
 
         model.addAttribute("pts", pts);
         return "/show/pt";
+    }
+
+    @GetMapping("/update/pt/{id}")
+    public String getUpdatePt(Model model, @PathVariable long id) {
+        Pt currentPt = this.ptService.getPtByID(id);
+        model.addAttribute("newPT", currentPt);
+        return "update/pt";
+    }
+
+    @PostMapping("/update/pt")
+    public String setUpdatePt(Model model, @ModelAttribute("newPT") Pt currentPt) {
+        Pt newPt = this.ptService.getPtByID(currentPt.getPt_id());
+        if (newPt != null) {
+            newPt.setName(currentPt.getName());
+            newPt.setSpecialization(currentPt.getSpecialization());
+            newPt.setPhoneNumber(currentPt.getPhoneNumber());
+            newPt.setExperience_year(currentPt.getExperience_year());
+            newPt.setDate_joined(currentPt.getDate_joined());
+            this.ptService.handlePt(newPt);
+        }
+        return "redirect:/info/pt";
+    }
+
+    @GetMapping("/delete/pt/{id}")
+    public String deletePt(Model model, @PathVariable long id) {
+        this.ptService.deleteById(id);
+        return "redirect:/info/pt";
     }
 }

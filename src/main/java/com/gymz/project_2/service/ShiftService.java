@@ -22,4 +22,12 @@ public class ShiftService {
     public List<Shift> getAllShift() {
         return this.shiftRepository.findAll();
     }
+
+    public Shift getShiftByID(long id) {
+        return this.shiftRepository.findById(id);
+    }
+
+    public void deleteShiftById(long id) {
+        this.shiftRepository.deleteById(id);
+    }
 }

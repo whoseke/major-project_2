@@ -13,8 +13,8 @@
 </head>
 <body>
     <div class="container mt-5">
-        <div class = "row">
-            <div class=" col-12 mx-auto">
+        <div class="row">
+            <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
                     <h3>Thông tin đặt hàng</h3>
                     <a href="/create/booking" class="btn btn-primary">Tạo đơn </a>
@@ -28,14 +28,23 @@
                     </tr>
                     <c:forEach var="b" items="${bookings}">
                         <tr>
+                            <td>${b.booking_id}</td>
                             <td>${b.member.name}</td>
                             <td>${b.session.session_Date}</td>
                             <td>${b.booking_date}</td>
+                            <td>
+                                <a href="/update/booking/${b.booking_id}" 
+                                class="btn btn-warning mx-2">Update</a>
+                                <button class="btn btn-danger">Delete</button>
+
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
     </div>
+    <%@ include file="../layout.jsp" %>
+
 </body>
 </html>

@@ -14,28 +14,41 @@
 <body>
     <div class="container mt-5">
         <div class = "row">
-            <div class=" col-12 mx-auto">
+            <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
-                    <h3>Thông tin tài khoản</h3>
-                    <a href="/create/account" class="btn btn-primary">Tạo tài khoản </a>
+                    <h3>Lịch nhân viên</h3>
+                    <a href="/create/shift" class="btn btn-primary">Tạo tài khoản </a>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>Tên đăng nhập</th>
-                        <th>Mật khẩu</th>
-                        <th>Loại tài khoản</th>
+                        <th>Tên nhân viên</th>
+                        <th>Ngày </th>
+                        <th>Giờ vào ca</th>
+                        <th>Giờ ra ca</th>
+
                     </tr>
-                    <c:forEach var="acc" items="${accounts}">
+                    <c:forEach var="shift" items="${shifts}">
                         <tr>
-                            <td>${acc.user}</td>
-                            <td>${acc.password}</td>
-                            <td>${acc.accountType}</td>
+                            <td>${shift.employee.name}</td>
+                            <td>${shift.shift_date}</td>
+                            <td>${shift.start_time}</td>
+                            <td>${shift.end_time}</td>
+                            <td>
+                                <a href="/update/shift/${shift.shift_id}" 
+                                class="btn btn-warning mx-2">Update</a>
+                                <a href="/delete/shift/${shift.shift_id}" 
+                                onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
+                                class="btn btn-danger">Delete</a>                           
+                             </td>
+
                         </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
     </div>
+    <%@ include file="../layout.jsp" %>
+
 </body>
 </html>

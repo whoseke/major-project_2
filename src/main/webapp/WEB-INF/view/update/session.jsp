@@ -22,30 +22,37 @@
             <div class="col-md-6 col-12 mx-auto">
                 <h3> Tạo buổi tập</h3>
                 <hr/>
-                <form:form method="post" action="/create/createSession" modelAttribute="newSession">
+                <form:form method="post" action="/update/session" modelAttribute="newSession">
 
-                    
-                    <div class="form-group">
-                        <label for="course">Mã khoá học:</label>
-                        <form:select path="course" class="form-control">
-                            <form:option value="" label="-- Chọn --"/>
-                            <c:forEach items="${course}" var="course">
-                                <form:option value="${course_id}" label="${course.name}"/>
-                            </c:forEach>
-                        </form:select>
-                    </div>
+                <div class="form-group">
+                    <label for="session_id">Mã buổi tập:</label>
+                    <form:input path="session_id" class="form-control" readonly="true"/>
+                </div>
 
-                    <div class="form-group">
-                        <label for="session_Date">Ngày tập:</label>
-                        <form:input type ="date" path="session_Date" class="form-control"/>
-                    </div>
+                <div class="form-group">
+                    <label for="session_Date">Ngày tập:</label>
+                    <form:input type ="text" path="session_Date" class="form-control" readonly="true"/>
+                    <form:input type ="date" path="session_Date" class="form-control"/>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Mã buổi tập:</label>
+                    <form:select path="course" class="form-control">
+                        <form:option value="" label="-- Chọn --"/>
+                        <c:forEach items="${course}" var="course">
+                            <form:option value="${course.course_id}" label="${course.name}"/>
+                           
+                        </c:forEach>
+                    </form:select>
+                </div>
 
                 <div class="form-group">
                     <label for="pt"> PT:</label>
                     <form:select path="pt" class="form-control">
                         <form:option value="" label="-- Chọn --"/>
                         <c:forEach items="${pt}" var="pt">
-                            <form:option value="${pt_id}" label="${pt.name}"/>
+                            <form:option value="${pt.pt_id}" label="${pt.name}"/>
                         </c:forEach>
                     </form:select>
                 </div>

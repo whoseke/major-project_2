@@ -22,4 +22,12 @@ public class PtService {
     public List<Pt> getAllPt() {
         return this.ptRepository.findAll();
     }
+
+    public Pt getPtByID(long id) {
+        return this.ptRepository.findById(id);
+    }
+
+    public void deleteById(long id) {
+        this.ptRepository.deleteById(id);
+    }
 }

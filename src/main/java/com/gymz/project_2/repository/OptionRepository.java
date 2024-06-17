@@ -8,4 +8,8 @@ import com.gymz.project_2.domain.OptionGym;
 @Repository
 public interface OptionRepository extends JpaRepository<OptionGym, Long> {
     OptionGym save(OptionGym op);
+
+    OptionGym findById(long ID);
+
+    void deleteById(long id);
 }

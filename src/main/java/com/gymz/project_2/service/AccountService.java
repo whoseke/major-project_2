@@ -22,4 +22,12 @@ public class AccountService {
     public List<Account> getAllAccount() {
         return this.accountRepository.findAll();
     }
+
+    public Account getAccountByID(long id) {
+        return this.accountRepository.findById(id);
+    }
+
+    public void deleteAccountById(long id) {
+        this.accountRepository.deleteById(id);
+    }
 }

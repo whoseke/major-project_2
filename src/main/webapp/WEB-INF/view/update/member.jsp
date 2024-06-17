@@ -14,40 +14,48 @@
     <!-- js -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>   
+
 </head>
 <body>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-12 mx-auto">
-                <h3> Tạo khoá học:</h3>
+                <h3>Hội viên</h3>
                 <hr/>
-                <form:form method="post" action="/create/createCourse" modelAttribute="newCourse">
-
+                <form:form method="post" action="/update/member" modelAttribute="newMember">
+                    
                     <div class="form-group">
-                        <label for="name">Tên khoá học:</label>
-                        <form:input type ="text" class="form-control" path="name"/>
+                        <label for="member_id">Mã hội viên:</label>
+                        <form:input path="member_id" class="form-control" readonly="true"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="duration">Thời gian: </label>
-                        <form:input type="duration" class="form-control" path="duration"></form:input>
+                        <label for="name">Tên hội viên:</label>
+                        <form:input type="text" path="name" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="start_date">Từ ngày:</label>
-                        <form:input type ="date" path="start_date" class="form-control"/>
+                        <label for="phoneNumber">Số điện thoại:</label>
+                        <form:input type="text" path="phoneNumber" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="end_date">Đến ngày:</label>
-                        <form:input type ="date" path="end_date" class="form-control"/>
+                        <label for="date_joined">Ngày đăng ký:</label>
+                        <form:input type="text" path="date_joined" class="form-control" readonly="true"/>
+                        <form:input type="date" path="date_joined" class="form-control"/>
                     </div>
-
+                   
                     <div class="form-group">
-                        <label for="price">Giá tiền:</label>
-                        <form:input type="text" path="price" class="form-control"></form:input>
+                        <label for="op">OptionGym:</label>
+                        <form:select path="op" class="form-control">
+                            <form:option value="" label="-- Chọn --"/>
+                            <c:forEach items="${op}" var="option">
+                                <form:option value="${option.op_id}" label="${option.name}"/>
+                            </c:forEach>
+                        </form:select>
                     </div>
+                    
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Tạo</button>

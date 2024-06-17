@@ -22,4 +22,12 @@ public class FeedbackService {
     public List<Feedback> getAllFeedback() {
         return this.feedbackRepository.findAll();
     }
+
+    public Feedback getFeedbackByID(long id) {
+        return this.feedbackRepository.findById(id);
+    }
+
+    public void deleteFeedbackById(long id) {
+        this.feedbackRepository.deleteById(id);
+    }
 }

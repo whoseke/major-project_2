@@ -15,38 +15,51 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        function displayPopup() {
+            alert("OK");
+        }
+    </script>
 </head>
 <body>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-12 mx-auto">
-                <h3> Tạo khoá học:</h3>
+                <h3> Cập nhật lịch làm</h3>
                 <hr/>
-                <form:form method="post" action="/create/createCourse" modelAttribute="newCourse">
-
+                <form:form method="post" action="/update/shift" modelAttribute="newShift" onsubmit="displayPopup()">
                     <div class="form-group">
-                        <label for="name">Tên khoá học:</label>
-                        <form:input type ="text" class="form-control" path="name"/>
+                        <div class="form-group">
+                            <label for="shift_id">Mã lịch làm:</label>
+                            <form:input path="shift_id" class="form-control" readonly="true"/>
+                        </div>
+                        
+                        <label for="employee">Mã nhân viên:</label>
+                        <input type="text" path="shift.employee" class="form-control" readonly="true"/>
+                        <form:select path="employee" class="form-control">
+                            <form:option value="" label="-- Chọn --"/>
+                            <c:forEach items="${employee}" var="employee">
+                                <form:option value="${employee.employee_id}" label="${employee.name}"/>
+                            </c:forEach>
+                        </form:select>
                     </div>
 
                     <div class="form-group">
-                        <label for="duration">Thời gian: </label>
-                        <form:input type="duration" class="form-control" path="duration"></form:input>
+                        <label for="shift_date">Ngày làm việc:</label>
+                        <form:input type ="text" path="shift_date" class="form-control" readonly="true"/>
+                        <form:input type ="date" path="shift_date" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="start_date">Từ ngày:</label>
-                        <form:input type ="date" path="start_date" class="form-control"/>
+                        <label for="start_time">Giờ vào ca:</label>
+                        <form:input type ="text" path="start_time" class="form-control" readonly="true"/>
+                        <form:input type ="time" path="start_time" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="end_date">Đến ngày:</label>
-                        <form:input type ="date" path="end_date" class="form-control"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="price">Giá tiền:</label>
-                        <form:input type="text" path="price" class="form-control"></form:input>
+                        <label for="end_time">Giờ ra ca:</label>
+                        <form:input type ="text" path="end_time" class="form-control" readonly="true"/>
+                        <form:input type ="time" path="end_time" class="form-control"/>
                     </div>
 
                     <div class="form-group">

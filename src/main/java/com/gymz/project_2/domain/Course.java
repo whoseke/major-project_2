@@ -1,8 +1,10 @@
 package com.gymz.project_2.domain;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,13 +26,20 @@ public class Course {
     @Column(length = 10, nullable = false)
     private BigDecimal price;
 
-    @OneToMany(mappedBy = "course")
+    @Column(nullable = false)
+    private LocalDate start_date;
+
+    @Column(nullable = false)
+    private LocalDate end_date;
+
+    @Column(nullable = false)
+    private float duration;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Feedback> feedbacks;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Session> sessions;
-
-    private float duration;
 
     public long getCourse_id() {
         return course_id;
@@ -46,6 +55,38 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public LocalDate getStart_date() {
+        return start_date;
+    }
+
+    public void setStart_date(LocalDate start_date) {
+        this.start_date = start_date;
+    }
+
+    public LocalDate getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(LocalDate end_date) {
+        this.end_date = end_date;
+    }
+
+    public float getDuration() {
+        return duration;
+    }
+
+    public void setDuration(float duration) {
+        this.duration = duration;
     }
 
     public List<Feedback> getFeedbacks() {
@@ -64,26 +105,10 @@ public class Course {
         this.sessions = sessions;
     }
 
-    public float getDuration() {
-        return duration;
-    }
-
-    public void setDuration(float duration) {
-        this.duration = duration;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
     @Override
     public String toString() {
-        return "Course [course_id=" + course_id + ", name=" + name + ", price=" + price + ", feedbacks=" + feedbacks
-                + ", sessions=" + sessions + ", duration=" + duration + "]";
+        return "Course [course_id=" + course_id + ", name=" + name + ", price=" + price + ", start_date=" + start_date
+                + ", end_date=" + end_date + ", duration=" + duration + "]";
     }
 
 }

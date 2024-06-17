@@ -73,8 +73,8 @@ public class Shift {
 
     @Override
     public String toString() {
-        return "Shift [shift_id=" + shift_id + ", employee=" + employee + ", shift_date=" + shift_date + ", start_time="
-                + start_time + ", end_time=" + end_time + "]";
+        return "Shift [shift_id=" + shift_id + ", shift_date=" + shift_date + ", start_time=" + start_time
+                + ", end_time=" + end_time + "]";
     }
 
 }

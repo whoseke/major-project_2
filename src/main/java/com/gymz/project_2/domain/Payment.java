@@ -61,8 +61,7 @@ public class Payment {
 
     @Override
     public String toString() {
-        return "Payment [payment_id=" + payment_id + ", member=" + member + ", op=" + op + ", paymentDate="
-                + paymentDate + "]";
+        return "Payment [payment_id=" + payment_id + ", paymentDate=" + paymentDate + "]";
     }
 
 }

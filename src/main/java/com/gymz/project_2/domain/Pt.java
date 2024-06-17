@@ -3,6 +3,7 @@ package com.gymz.project_2.domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class Pt {
     @Column(nullable = false)
     private LocalDate date_joined;
 
-    @OneToMany(mappedBy = "pt")
+    @OneToMany(mappedBy = "pt", cascade = CascadeType.ALL)
     private List<Session> sessions;
 
     public long getPt_id() {
@@ -94,8 +95,7 @@ public class Pt {
     @Override
     public String toString() {
         return "Pt [pt_id=" + pt_id + ", name=" + name + ", phoneNumber=" + phoneNumber + ", specialization="
-                + specialization + ", experience_year=" + experience_year + ", date_joined=" + date_joined
-                + ", sessions=" + sessions + "]";
+                + specialization + ", experience_year=" + experience_year + ", date_joined=" + date_joined + "]";
     }
 
 }

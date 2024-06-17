@@ -1,13 +1,10 @@
 package com.gymz.project_2.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.gymz.project_2.domain.Booking;
-import com.gymz.project_2.domain.Course;
-import com.gymz.project_2.domain.Session;
 import com.gymz.project_2.repository.BookingRepository;
 
 @Service
@@ -26,4 +23,12 @@ public class BookingService {
         return this.bookingRepository.findAll();
     }
 
+    public Booking getBookingByID(long id) {
+        return bookingRepository.findById(id);
+
+    }
+
+    public void deleteBookingById(long id) {
+        this.bookingRepository.deleteById(id);
+    }
 }

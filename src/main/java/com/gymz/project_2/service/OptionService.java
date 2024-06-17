@@ -22,4 +22,12 @@ public class OptionService {
     public List<OptionGym> getAllOption() {
         return this.optionRepository.findAll();
     }
+
+    public OptionGym getOptionGymByID(long id) {
+        return this.optionRepository.findById(id);
+    }
+
+    public void deleteOptionById(long id) {
+        this.optionRepository.deleteById(id);
+    }
 }

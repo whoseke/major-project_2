@@ -61,8 +61,7 @@ public class Feedback {
 
     @Override
     public String toString() {
-        return "Feedback [feedback_id=" + feedback_id + ", member=" + member + ", course=" + course + ", comment="
-                + comment + "]";
+        return "Feedback [feedback_id=" + feedback_id + ", comment=" + comment + "]";
     }
 
 }

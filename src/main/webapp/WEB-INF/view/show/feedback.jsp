@@ -14,10 +14,9 @@
 <body>
     <div class="container mt-5">
         <div class = "row">
-            <div class=" col-12 mx-auto">
+            <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
-                    <h3>Thông tin tài khoản</h3>
-                    <!-- <a href="/create/account" class="btn btn-primary">Tạo tài khoản </a> -->
+                    <h3>Thông tin phản hồi</h3>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
@@ -34,12 +33,21 @@
                             <td>${f.member.name}</td>
                             <td>${f.course.name}</td>
                             <td>${f.comment}</td>
-
+                            <td>
+                                <a href="/update/feedback/${f.feedback_id}" 
+                                class="btn btn-warning mx-2">Update</a>
+                                <a href="/delete/feedback/${f.feedback_id}" 
+                                onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
+                                class="btn btn-danger">Delete</a>                            
+                            </td>
+                          
                         </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
     </div>
+    <%@ include file="../layout.jsp" %>
+
 </body>
 </html>

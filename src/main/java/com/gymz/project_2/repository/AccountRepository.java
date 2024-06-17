@@ -8,4 +8,11 @@ import com.gymz.project_2.domain.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
     Account save(Account acc);
+
+    Account findById(long id);
+
+    void deleteById(long id);
+
+    Account findByUser(String username);
+
 }

@@ -15,38 +15,33 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   
 </head>
 <body>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-12 mx-auto">
-                <h3> Tạo khoá học:</h3>
+                <h3> Nhân viên </h3>
                 <hr/>
-                <form:form method="post" action="/create/createCourse" modelAttribute="newCourse">
-
+                <form:form method="post" action="/update/employee" modelAttribute="newEmployee">
+                    
                     <div class="form-group">
-                        <label for="name">Tên khoá học:</label>
-                        <form:input type ="text" class="form-control" path="name"/>
+                        <label for="employee_id">Mã nhân viên:</label>
+                        <form:input path="employee_id" class="form-control" readonly="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Họ tên:</label>
+                        <form:input type="text" path="name" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="duration">Thời gian: </label>
-                        <form:input type="duration" class="form-control" path="duration"></form:input>
+                        <label for="position">Vị trí:</label>
+                        <form:input type ="text" path="position" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="start_date">Từ ngày:</label>
-                        <form:input type ="date" path="start_date" class="form-control"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="end_date">Đến ngày:</label>
-                        <form:input type ="date" path="end_date" class="form-control"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="price">Giá tiền:</label>
-                        <form:input type="text" path="price" class="form-control"></form:input>
+                        <label for="salary">Mức lương:</label>
+                        <form:input type ="text" path="salary" class="form-control"/>
                     </div>
 
                     <div class="form-group">

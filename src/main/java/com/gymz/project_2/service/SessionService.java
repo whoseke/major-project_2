@@ -23,4 +23,11 @@ public class SessionService {
         return this.sessionRepository.save(session);
     }
 
+    public Session getSessionByID(long id) {
+        return this.sessionRepository.findById(id);
+    }
+
+    public void deleteSessionById(long id) {
+        this.sessionRepository.deleteById(id);
+    }
 }

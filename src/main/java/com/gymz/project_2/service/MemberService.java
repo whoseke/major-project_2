@@ -23,4 +23,12 @@ public class MemberService {
         return this.memberRepository.save(member);
     }
 
+    public Member getMemberByID(long id) {
+        return this.memberRepository.findById(id);
+    }
+
+    public void deledeleteBy(long id) {
+        this.memberRepository.deleteById(id);
+    }
+
 }

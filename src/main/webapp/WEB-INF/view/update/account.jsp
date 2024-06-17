@@ -20,37 +20,36 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-12 mx-auto">
-                <h3> Tạo khoá học:</h3>
+                <h3> Cập nhật tài khoản</h3>
                 <hr/>
-                <form:form method="post" action="/create/createCourse" modelAttribute="newCourse">
-
+               
+                <form:form method="post" action="/update/account" modelAttribute="newAccount">
                     <div class="form-group">
-                        <label for="name">Tên khoá học:</label>
-                        <form:input type ="text" class="form-control" path="name"/>
+                        <label for="account_id">Mã tài khoản:</label>
+                        <form:input path="account_id" class="form-control" readonly="true"/>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="user">Người dùng:</label>
+                        <form:input path="user" class="form-control" readonly="true" />
                     </div>
 
                     <div class="form-group">
-                        <label for="duration">Thời gian: </label>
-                        <form:input type="duration" class="form-control" path="duration"></form:input>
+                        <label for="password">Mật khẩu:</label>
+                        <form:input type ="password" path="password" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="start_date">Từ ngày:</label>
-                        <form:input type ="date" path="start_date" class="form-control"/>
+                        <label for="accountType">Loại tài khoản:</label>
+                        <form:select path="accountType" class="form-control">
+                            <form:option value="Member">Hội viên</form:option>
+                            <form:option value="Employee">Nhân Viên</form:option>
+                            <form:option value="Pt">Huấn luyện viên</form:option>
+                        </form:select>
                     </div>
 
                     <div class="form-group">
-                        <label for="end_date">Đến ngày:</label>
-                        <form:input type ="date" path="end_date" class="form-control"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="price">Giá tiền:</label>
-                        <form:input type="text" path="price" class="form-control"></form:input>
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Tạo</button>
+                        <button type="submit" class="btn btn-warning" onlick="toHomePage">Cập nhật</button>
                     </div>
                 </form:form>
             </div>

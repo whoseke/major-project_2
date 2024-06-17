@@ -22,4 +22,13 @@ public class CourseService {
     public List<Course> getAllCourse() {
         return this.courseRepository.findAll();
     }
+
+    public Course getCourseByID(long id) {
+        return this.courseRepository.findById(id);
+    }
+
+    public void deleteCourseByID(long id) {
+        this.courseRepository.deleteById(id);
+        ;
+    }
 }

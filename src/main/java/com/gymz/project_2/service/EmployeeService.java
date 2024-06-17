@@ -23,4 +23,11 @@ public class EmployeeService {
         return this.employeeRepository.save(employee);
     }
 
+    public Employee getEmployeeByID(long id) {
+        return this.employeeRepository.findById(id);
+    }
+
+    public void deleteEmployeeById(long id) {
+        this.employeeRepository.deleteById(id);
+    }
 }

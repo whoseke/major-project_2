@@ -20,34 +20,31 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-12 mx-auto">
-                <h3> Tạo khoá học:</h3>
+                <h3> Tạo gói tập</h3>
                 <hr/>
-                <form:form method="post" action="/create/createCourse" modelAttribute="newCourse">
-
+                <form:form method="post" action="/update/option" modelAttribute="newOption">
+                    
                     <div class="form-group">
-                        <label for="name">Tên khoá học:</label>
-                        <form:input type ="text" class="form-control" path="name"/>
+                        <label for="op_id">Mã gói tập:</label>
+                        <form:input path="op_id" class="form-control" readonly="true"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="duration">Thời gian: </label>
-                        <form:input type="duration" class="form-control" path="duration"></form:input>
+                        <label for="name">Tên gói tập:</label>
+                        <form:input type="text" path="name" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="start_date">Từ ngày:</label>
-                        <form:input type ="date" path="start_date" class="form-control"/>
+                        <label for="password">Thời hạn:</label>
+                        <form:input type ="text" path="duration" class="form-control"/>
+                    </div>
+                    
+    
+                    <div class="form-group">
+                        <label for="price">Giá:</label>
+                        <form:input type ="text" path="price" class="form-control"/>
                     </div>
 
-                    <div class="form-group">
-                        <label for="end_date">Đến ngày:</label>
-                        <form:input type ="date" path="end_date" class="form-control"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="price">Giá tiền:</label>
-                        <form:input type="text" path="price" class="form-control"></form:input>
-                    </div>
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Tạo</button>
