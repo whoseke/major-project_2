@@ -38,7 +38,7 @@ public class PaymentController {
         model.addAttribute("op", op);
         model.addAttribute("member", member);
         model.addAttribute("newPayment", new Payment());
-        return "/create/payment";
+        return "admin/user/employee/create/payment";
     }
 
     @PostMapping(value = "/create/createPayment")
@@ -52,7 +52,7 @@ public class PaymentController {
         List<Payment> payments = this.paymentService.getAllPayment();
 
         model.addAttribute("payments", payments);
-        return "/show/payment";
+        return "admin/user/employee/show/payment";
     }
 
     @GetMapping("/update/payment/{id}")
@@ -64,7 +64,7 @@ public class PaymentController {
         model.addAttribute("op", op);
         model.addAttribute("member", member);
         model.addAttribute("newPayment", currentPayment);
-        return "/update/payment";
+        return "admin/user/employee/update/payment";
     }
 
     @PostMapping("/update/payment")

@@ -38,7 +38,7 @@ public class SessionController {
         model.addAttribute("pt", pt);
         model.addAttribute("newSession", new Session());
 
-        return "/create/session";
+        return "admin/user/employee/create/pt/session";
     }
 
     @PostMapping(value = "/create/createSession")
@@ -53,7 +53,7 @@ public class SessionController {
         List<Session> sessions = this.sessionService.getAllSession();
 
         model.addAttribute("sessions", sessions);
-        return "/show/session";
+        return "admin/user/employee/show/pt/session";
     }
 
     @GetMapping("/update/session/{id}")
@@ -66,7 +66,7 @@ public class SessionController {
         model.addAttribute("pt", pt);
         model.addAttribute("newSession", currentSession);
 
-        return "/update/session";
+        return "admin/user/employee/update/pt/session";
     }
 
     @PostMapping("/update/session")

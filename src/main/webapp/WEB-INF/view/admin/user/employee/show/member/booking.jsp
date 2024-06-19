@@ -13,42 +13,39 @@
 </head>
 <body>
     <div class="container mt-5">
-        <div class = "row">
+        <div class="row">
             <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
-                    <h3>Lịch nhân viên</h3>
-                    <a href="/create/shift" class="btn btn-primary">Tạo tài khoản </a>
+                    <h3>Thông tin đặt hàng</h3>
+                    <a href="/create/booking" class="btn btn-primary">Tạo đơn </a>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>Tên nhân viên</th>
-                        <th>Ngày </th>
-                        <th>Giờ vào ca</th>
-                        <th>Giờ ra ca</th>
-
+                        <th>ID</th>
+                        <th>Mã hội viên</th>
+                        <th>Mã buổi tập</th>
+                        <th>Ngày đăng ký</th>
                     </tr>
-                    <c:forEach var="shift" items="${shifts}">
+                    <c:forEach var="b" items="${bookings}">
                         <tr>
-                            <td>${shift.employee.name}</td>
-                            <td>${shift.shift_date}</td>
-                            <td>${shift.start_time}</td>
-                            <td>${shift.end_time}</td>
+                            <td>${b.booking_id}</td>
+                            <td>${b.member.name}</td>
+                            <td>${b.session.session_Date}</td>
+                            <td>${b.booking_date}</td>
                             <td>
-                                <a href="/update/shift/${shift.shift_id}" 
+                                <a href="/update/booking/${b.booking_id}" 
                                 class="btn btn-warning mx-2">Update</a>
-                                <a href="/delete/shift/${shift.shift_id}" 
-                                onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
-                                class="btn btn-danger">Delete</a>                           
-                             </td>
+                                <button class="btn btn-danger">Delete</button>
 
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
     </div>
-    <%@ include file="../layout.jsp" %>
+    <%@ include file="../../../../../layout.jsp" %>
 
 </body>
 </html>

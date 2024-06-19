@@ -17,7 +17,7 @@
             <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
                     <h3>Thông tin buổi tập</h3>
-                    <a href="/create/session" class="btn btn-primary">Tạo tài khoản </a>
+                    <a href="/create/session" class="btn btn-primary">Tạo buổi tập </a>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    <%@ include file="../layout.jsp" %>
+    <%@ include file="../../../../../layout.jsp" %>
 
 </body>
 </html>

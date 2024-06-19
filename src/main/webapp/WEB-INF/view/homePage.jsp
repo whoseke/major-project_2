@@ -33,15 +33,15 @@
                 <div class="navbar-collapse justify-content-end">
                     <ul class="navbar-nav">
                         <li class="nav-item ">
-                            <button class="btn btn-outline-primary btn-lg mx-2" onclick="location.href='/create/member'">
-                                Đăng nhập
+                            <button class="btn btn-outline-primary btn-lg mx-2" onclick="location.href='/info/booking'">
+                                Quản lý hệ thống
                             </button>
                         </li>
-                        <li class="nav-item">
-                            <button class="btn btn-outline-warning btn-lg mx-2" onclick="location.href='/create/employee'">
+                        <!-- <li class="nav-item">
+                            <button class="btn btn-outline-warning btn-lg mx-2" onclick="location.href=''">
                                 Đăng ký
                             </button>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
 

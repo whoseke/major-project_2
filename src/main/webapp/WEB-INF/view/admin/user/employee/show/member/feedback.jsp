@@ -16,36 +16,38 @@
         <div class = "row">
             <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
-                    <h3>Thông tin gói tập</h3>
-                    <a href="/create/option" class="btn btn-primary">Tạo gói tập </a>                 
+                    <h3>Thông tin phản hồi</h3>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>Mã gói tập</th>
-                        <th>Tên gói tập</th>
-                        <th>Thời hạn</th>
-                        <th>Mức giá </th>
+                        <th>Mã phản hồi</th>
+                        <th>Hội viên</th>
+                        <th>Khoá học</th>
+                        <th>Nội dung phản hồi</th>
+
                     </tr>
-                    <c:forEach var="op" items="${options}">
+                    <c:forEach var="f" items="${feedbacks}">
                         <tr>
-                            <td>${op.op_id}</td>
-                            <td>${op.name}</td>
-                            <td>${op.duration}</td>
-                            <td>${op.duration}</td>
-                            <td>${op.price}</td>
-                            <td><a href="/update/option/${op.op_id}" 
+                            <td>${f.feedback_id}</td>
+                            <td>${f.member.name}</td>
+                            <td>${f.course.name}</td>
+                            <td>${f.comment}</td>
+                            <td>
+                                <a href="/update/feedback/${f.feedback_id}" 
                                 class="btn btn-warning mx-2">Update</a>
-                                <a href="/delete/member/${op.op_id}" 
+                                <a href="/delete/feedback/${f.feedback_id}" 
                                 onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
-                                class="btn btn-danger">Delete</a>                        
-                            </tr>
+                                class="btn btn-danger">Delete</a>                            
+                            </td>
+                          
+                        </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
     </div>
-    <%@ include file="../layout.jsp" %>
+    <%@ include file="../../../../../layout.jsp" %>
 
 </body>
 </html>

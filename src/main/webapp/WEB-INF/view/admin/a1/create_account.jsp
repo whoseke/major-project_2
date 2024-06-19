@@ -44,11 +44,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="accountType">Loại tài khoản:</label>
-                        <form:select path="accountType" class="form-control">
-                            <form:option value="Member">Hội viên</form:option>
-                            <form:option value="Employee">Nhân Viên</form:option>
-                            <form:option value="Pt">Huấn luyện viên</form:option>
+                        <label for="session">Loại tài khoản:</label>
+                        <form:select path="role" class="form-control">
+                            <form:option value="" label="-- Chọn --"/>
+                            <c:forEach items="${role}" var="role">
+                                <form:option value="${role.role_id}" label="${role.name}"/>
+                            </c:forEach>
                         </form:select>
                     </div>
 

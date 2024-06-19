@@ -17,7 +17,7 @@
             <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
                     <h3>Thông tin hội viên</h3>
-                    <a href="/create/member" class="btn btn-primary">Thông tin Hội Viên </a>
+                    <a href="/create/member" class="btn btn-primary">Tạo Hội Viên </a>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-    <%@ include file="../layout.jsp" %>
+    <%@ include file="../../../../../layout.jsp" %>
 
 </body>
 </html>

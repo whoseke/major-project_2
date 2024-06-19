@@ -14,7 +14,7 @@
             height: 100%;
             width: 300px; 
             background-color: #333;
-            padding-top: 20px;
+            padding-top: 30px;
             color: #fff;
         }
 
@@ -53,7 +53,7 @@
             <li><a href="/info/course">Khoá học</a></li>
             <li><a href="/info/session">Buổi tập</a></li>
             
-            <li><a href="/info/booking">Thông tin đặt chỗ</a></li>
+            <li><a href="/info/booking">Đặt lịch</a></li>
             <li><a href="/info/member">Hội viên</a></li>
             <li><a href="/info/pt">Huấn luyện viên</a></li>
 

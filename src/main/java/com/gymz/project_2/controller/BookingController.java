@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import com.gymz.project_2.domain.Account;
 import com.gymz.project_2.domain.Booking;
 import com.gymz.project_2.domain.Member;
 import com.gymz.project_2.domain.Session;
@@ -40,7 +39,7 @@ public class BookingController {
         model.addAttribute("member", member);
         model.addAttribute("session", session);
 
-        return "/create/booking";
+        return "admin/user/employee/create/member/booking";
     }
 
     @PostMapping(value = "/create/createBooking")
@@ -53,7 +52,7 @@ public class BookingController {
     public String showBooking(Model model) {
         List<Booking> bookings = this.bookingService.getAllBooking();
         model.addAttribute("bookings", bookings);
-        return "/show/booking";
+        return "admin/user/employee/show/member/booking";
     }
 
     @GetMapping("/update/booking/{id}")
@@ -68,7 +67,7 @@ public class BookingController {
         model.addAttribute("sessionList", sessionList);
         model.addAttribute("newBooking", currentBooking);
 
-        return "/update/booking";
+        return "admin/user/employee/update/member/booking";
     }
 
     @PostMapping("/update/booking")

@@ -30,4 +30,8 @@ public class AccountService {
     public void deleteAccountById(long id) {
         this.accountRepository.deleteById(id);
     }
+
+    public Account getAccountByUser(String user) {
+        return this.accountRepository.findByUser(user);
+    }
 }

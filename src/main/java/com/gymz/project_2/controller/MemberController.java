@@ -30,7 +30,7 @@ public class MemberController {
         System.out.println(op);
         model.addAttribute("op", op);
         model.addAttribute("newMember", new Member());
-        return "/create/member";
+        return "admin/user/employee/create/member/member";
     }
 
     @PostMapping(value = "/create/createMember")
@@ -44,7 +44,7 @@ public class MemberController {
         List<Member> members = this.memberService.getAllMember();
 
         model.addAttribute("members", members);
-        return "/show/member";
+        return "admin/user/employee/show/member/member";
     }
 
     @GetMapping("/update/member/{id}")
@@ -54,7 +54,7 @@ public class MemberController {
         Member currentMember = this.memberService.getMemberByID(id);
         model.addAttribute("op", op);
         model.addAttribute("newMember", currentMember);
-        return "/update/member";
+        return "admin/user/employee/update/member/member";
     }
 
     @PostMapping("/update/member")

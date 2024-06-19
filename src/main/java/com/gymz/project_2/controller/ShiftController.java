@@ -31,7 +31,7 @@ public class ShiftController {
 
         model.addAttribute("newShift", new Shift());
         model.addAttribute("employee", employee);
-        return "create/shift";
+        return "admin/user/employee/create/shift";
     }
 
     @PostMapping(value = "/create/createShift")
@@ -45,7 +45,7 @@ public class ShiftController {
         List<Shift> shifts = this.shiftService.getAllShift();
 
         model.addAttribute("shifts", shifts);
-        return "/show/shift";
+        return "admin/user/employee/show/shift";
     }
 
     @GetMapping("/update/shift/{id}")
@@ -55,7 +55,7 @@ public class ShiftController {
         Shift currentShift = this.shiftService.getShiftByID(id);
         model.addAttribute("newShift", currentShift);
         model.addAttribute("employee", employee);
-        return "update/shift";
+        return "admin/user/employee/update/shift";
     }
 
     @PostMapping("/update/shift")

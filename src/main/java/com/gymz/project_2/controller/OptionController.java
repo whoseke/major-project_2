@@ -23,7 +23,7 @@ public class OptionController {
     @GetMapping("/create/option")
     public String createOption(Model model) {
         model.addAttribute("newOption", new OptionGym());
-        return "/create/option";
+        return "admin/user/employee/create/option";
     }
 
     @PostMapping(value = "/create/createOption")
@@ -36,14 +36,14 @@ public class OptionController {
     public String showoption(Model model) {
         List<OptionGym> options = this.optionService.getAllOption();
         model.addAttribute("options", options);
-        return "/show/option";
+        return "admin/user/employee/show/option";
     }
 
     @GetMapping("/update/option/{id}")
     public String setUpdateOption(Model model, @PathVariable long id) {
         OptionGym currentOP = this.optionService.getOptionGymByID(id);
         model.addAttribute("newOption", currentOP);
-        return "/update/option";
+        return "admin/user/employee/update/option";
     }
 
     @PostMapping("/update/option")

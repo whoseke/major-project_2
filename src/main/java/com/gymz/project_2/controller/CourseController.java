@@ -24,7 +24,7 @@ public class CourseController {
     public String createCourse(Model model) {
         model.addAttribute("newCourse", new Course());
 
-        return "create/course";
+        return "admin/user/employee/create/course";
     }
 
     @PostMapping("/create/createCourse")
@@ -39,7 +39,7 @@ public class CourseController {
         List<Course> courses = this.courseService.getAllCourse();
 
         model.addAttribute("courses", courses);
-        return "/show/course";
+        return "admin/user/employee/show/course";
     }
 
     @GetMapping("/update/course/{id}")
@@ -48,7 +48,7 @@ public class CourseController {
         Course currentCourse = this.courseService.getCourseByID(id);
         model.addAttribute("newCourse", currentCourse);
 
-        return "update/course";
+        return "admin/user/employee/update/course";
     }
 
     @PostMapping("/update/course")

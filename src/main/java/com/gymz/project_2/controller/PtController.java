@@ -24,7 +24,7 @@ public class PtController {
     @GetMapping("/create/pt")
     public String createPt(Model model) {
         model.addAttribute("newPT", new Pt());
-        return "create/pt";
+        return "admin/user/employee/create/pt/pt";
     }
 
     @PostMapping(value = "/create/createPT")
@@ -38,14 +38,14 @@ public class PtController {
         List<Pt> pts = this.ptService.getAllPt();
 
         model.addAttribute("pts", pts);
-        return "/show/pt";
+        return "admin/user/employee/show/pt/pt";
     }
 
     @GetMapping("/update/pt/{id}")
     public String getUpdatePt(Model model, @PathVariable long id) {
         Pt currentPt = this.ptService.getPtByID(id);
         model.addAttribute("newPT", currentPt);
-        return "update/pt";
+        return "admin/user/employee/update/pt/pt";
     }
 
     @PostMapping("/update/pt")
