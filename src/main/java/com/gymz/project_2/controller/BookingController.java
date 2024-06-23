@@ -39,7 +39,7 @@ public class BookingController {
         model.addAttribute("member", member);
         model.addAttribute("session", session);
 
-        return "admin/user/employee/create/member/booking";
+        return "booking/create_booking";
     }
 
     @PostMapping(value = "/create/createBooking")
@@ -52,7 +52,7 @@ public class BookingController {
     public String showBooking(Model model) {
         List<Booking> bookings = this.bookingService.getAllBooking();
         model.addAttribute("bookings", bookings);
-        return "admin/user/employee/show/member/booking";
+        return "booking/show_booking";
     }
 
     @GetMapping("/update/booking/{id}")
@@ -67,7 +67,7 @@ public class BookingController {
         model.addAttribute("sessionList", sessionList);
         model.addAttribute("newBooking", currentBooking);
 
-        return "admin/user/employee/update/member/booking";
+        return "booking/update_booking";
     }
 
     @PostMapping("/update/booking")

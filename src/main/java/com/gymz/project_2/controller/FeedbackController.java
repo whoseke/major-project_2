@@ -37,7 +37,7 @@ public class FeedbackController {
         model.addAttribute("course", course);
         model.addAttribute("member", member);
         model.addAttribute("newFeedback", new Feedback());
-        return "admin/user/employee/create/member/feedback";
+        return "feedback/create_feedback";
     }
 
     @PostMapping(value = "/create/createFeedback")
@@ -51,7 +51,7 @@ public class FeedbackController {
         List<Feedback> feedbacks = this.feedbackService.getAllFeedback();
 
         model.addAttribute("feedbacks", feedbacks);
-        return "admin/user/employee/show/member/feedback";
+        return "feedback/show_feedback";
     }
 
     @GetMapping("/update/feedback/{id}")
@@ -64,7 +64,7 @@ public class FeedbackController {
         model.addAttribute("course", course);
         model.addAttribute("member", member);
         model.addAttribute("newFeedback", currentFeedBack);
-        return "admin/user/employee/update/member/feedback";
+        return "feedback/update_feedback";
     }
 
     @PostMapping("/update/feedback")

@@ -1,22 +1,14 @@
 package com.gymz.project_2.config;
 
-import org.apache.tomcat.util.net.DispatchType;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-
 import com.gymz.project_2.service.AccountService;
 import com.gymz.project_2.service.CustomUserDetailsService;
 
@@ -51,16 +43,37 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.INCLUDE)
+                        .dispatcherTypeMatchers(DispatcherType.FORWARD,
+                                DispatcherType.INCLUDE)
                         .permitAll()
-                        // .requestMatchers("/login").hasRole("Admin ")
+
+                        .requestMatchers("/admin/**").hasRole("Admin")
+
+                        .requestMatchers("/info/**").hasRole("Employee")
+
+                        .requestMatchers("/member/**").hasRole("Member")
+
+                        .requestMatchers("/pt/**").hasRole("pt")
+
+                        .requestMatchers("/", "/login", "/image/**", "/logout")
+                        .permitAll()
+
                         .anyRequest().authenticated())
+
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
                         .failureUrl("/login?error")
+                        .permitAll())
+                .logout(logout -> logout
                         .permitAll());
-
         return http.build();
     }
-
 }
+
+// fault config for security 6
+/*
+ * .formLogin(form -> form
+ * .permitAll())
+ * .logout(logout -> logout
+ * .permitAll());
+ */

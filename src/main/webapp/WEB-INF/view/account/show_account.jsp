@@ -11,38 +11,40 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
 </head>
-<body>
+<body >
+    <jsp:include page = "../layout/header.jsp"/>
+    <jsp:include page = "../layout/sidebar.jsp"/>   
+    
     <div class="container mt-5">
-        <div class = "row">
-            <div class="col-md-8 offset-md-3"> 
+        <div class="row">
+            <div class="col-md-11 offset-md-2"> 
                 <div class="d-flex justify-content-between">
-                    <h3>Thông tin buổi tập</h3>
-                    <a href="/create/session" class="btn btn-primary">Tạo buổi tập </a>
+                    <h3>Thông tin tài khoản</h3>
+                    <a href="/create/account" class="btn btn-primary">Tạo tài khoản</a>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>Mã buổi tập</th>
-                        <th>Buổi tập</th>
-                        <th>Mã khoá học</th>
-                        <th>Mã PT</th>
-                        <th>Từ</th>
-                        <th>Đến</th>
+                        <th>ID</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Mật khẩu</th>
+                        <th>Loại tài khoản</th>
                     </tr>
-                    <c:forEach var="s" items="${sessions}">
+                    <c:forEach var="acc" items="${accounts}">
                         <tr>
-                            <td>${s.session_id}</td>
-                            <td>${s.session_Date}</td>
-                            <td>${s.course.course_id}</td>
-                            <td>${s.pt.pt_id}</td>
-                            <td>${s.start_time}</td>
-                            <td>${s.end_time}</td>
+                            <td>${acc.account_id}</td>
+                            <td>${acc.user}</td>
+                            <td>${acc.password}</td>
+                            <td>${acc.role.name}</td>
                             <td>
-                                <a href="/update/session/${s.session_id}" 
+                                <a href="/update/account/${acc.account_id}" 
                                 class="btn btn-warning mx-2">Update</a>
-                                <a href="/delete/session/${s.session_id}" 
+                                <a href="/delete/account/${acc.account_id}" 
                                 onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
-                                class="btn btn-danger">Delete</a>                            
+                                class="btn btn-danger">Delete</a>
+                            
+                                
+
                             </td>
                         </tr>
                     </c:forEach>
@@ -50,7 +52,5 @@
             </div>
         </div>
     </div>
-    <%@ include file="../../../../../layout.jsp" %>
-
 </body>
 </html>

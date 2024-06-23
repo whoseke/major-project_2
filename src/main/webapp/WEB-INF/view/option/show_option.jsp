@@ -12,6 +12,9 @@
     
 </head>
 <body>
+    <jsp:include page = "../layout/header.jsp"/>
+    <jsp:include page = "../layout/sidebar.jsp"/>   
+    
     <div class="container mt-5">
         <div class = "row">
             <div class="col-md-8 offset-md-3"> 
@@ -45,7 +48,5 @@
             </div>
         </div>
     </div>
-    <%@ include file="../../../../layout.jsp" %>
-
 </body>
 </html>

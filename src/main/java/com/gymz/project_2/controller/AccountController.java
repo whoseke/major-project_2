@@ -14,8 +14,6 @@ import com.gymz.project_2.domain.Account;
 import com.gymz.project_2.domain.AccountRole;
 import com.gymz.project_2.service.AccountRoleService;
 import com.gymz.project_2.service.AccountService;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AccountController {
@@ -36,7 +34,7 @@ public class AccountController {
         List<AccountRole> role = this.accountRoleService.getAllRole();
         model.addAttribute("role", role);
         model.addAttribute("newAccount", new Account());
-        return "admin/a1/create_account";
+        return "account/create_account";
     }
 
     @PostMapping(value = "/create/createAccount")
@@ -53,7 +51,7 @@ public class AccountController {
         List<Account> accounts = this.accountService.getAllAccount();
 
         model.addAttribute("accounts", accounts);
-        return "/admin/a1/show_account";
+        return "account/show_account";
     }
 
     @GetMapping("/update/account/{id}")
@@ -62,7 +60,7 @@ public class AccountController {
         List<AccountRole> role = accountRoleService.getAllRole();
         model.addAttribute("role", role);
         model.addAttribute("newAccount", currentAccount);
-        return "admin/a1/update_account";
+        return "account/update_account";
     }
 
     @PostMapping("/update/account")
@@ -81,11 +79,6 @@ public class AccountController {
     public String deleteAccount(Model model, @PathVariable long id) {
         this.accountService.deleteAccountById(id);
         return "redirect:/info/account";
-    }
-
-    @GetMapping("/register")
-    public String getMethodName(Model model) {
-        return "/register";
     }
 
 }

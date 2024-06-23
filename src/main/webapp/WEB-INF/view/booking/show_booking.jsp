@@ -12,42 +12,41 @@
     
 </head>
 <body>
+    <jsp:include page = "../layout/header.jsp"/>
+    <jsp:include page = "../layout/sidebar.jsp"/> 
+    
     <div class="container mt-5">
-        <div class = "row">
+        <div class="row">
             <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
-                    <h3>Thông tin phản hồi</h3>
+                    <h3>Thông tin đặt hàng</h3>
+                    <a href="/create/booking" class="btn btn-primary">Tạo đơn </a>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>Mã phản hồi</th>
-                        <th>Hội viên</th>
-                        <th>Khoá học</th>
-                        <th>Nội dung phản hồi</th>
-
+                        <th>ID</th>
+                        <th>Mã hội viên</th>
+                        <th>Mã buổi tập</th>
+                        <th>Ngày đăng ký</th>
                     </tr>
-                    <c:forEach var="f" items="${feedbacks}">
+                    <c:forEach var="b" items="${bookings}">
                         <tr>
-                            <td>${f.feedback_id}</td>
-                            <td>${f.member.name}</td>
-                            <td>${f.course.name}</td>
-                            <td>${f.comment}</td>
+                            <td>${b.booking_id}</td>
+                            <td>${b.member.name}</td>
+                            <td>${b.session.session_Date}</td>
+                            <td>${b.booking_date}</td>
                             <td>
-                                <a href="/update/feedback/${f.feedback_id}" 
+                                <a href="/update/booking/${b.booking_id}" 
                                 class="btn btn-warning mx-2">Update</a>
-                                <a href="/delete/feedback/${f.feedback_id}" 
-                                onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
-                                class="btn btn-danger">Delete</a>                            
+                                <button class="btn btn-danger">Delete</button>
+
                             </td>
-                          
                         </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
     </div>
-    <%@ include file="../../../../../layout.jsp" %>
-
 </body>
 </html>

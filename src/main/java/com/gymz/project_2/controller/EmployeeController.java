@@ -24,7 +24,7 @@ public class EmployeeController {
     @GetMapping("/create/employee")
     public String createEmployee(Model model) {
         model.addAttribute("newEmployee", new Employee());
-        return "admin/user/employee/create/employee";
+        return "employee/create_employee";
     }
 
     @PostMapping(value = "/create/createEmployee")
@@ -38,14 +38,14 @@ public class EmployeeController {
         List<Employee> employees = this.employeeService.getAllEmployees();
 
         model.addAttribute("employees", employees);
-        return "admin/user/employee/show/employee";
+        return "employee/show_employee";
     }
 
     @GetMapping("/update/employee/{id}")
     public String getUpdateEmployee(Model model, @PathVariable long id) {
         Employee currentEmployee = this.employeeService.getEmployeeByID(id);
         model.addAttribute("newEmployee", currentEmployee);
-        return "admin/user/employee/update/employee";
+        return "employee/update_employee";
     }
 
     @PostMapping("/update/employee")

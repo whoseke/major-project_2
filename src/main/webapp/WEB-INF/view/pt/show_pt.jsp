@@ -12,46 +12,46 @@
     
 </head>
 <body>
+    <jsp:include page = "../layout/header.jsp"/>
+    <jsp:include page = "../layout/sidebar.jsp"/>   
+    
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-11 offset-md-2"> 
+        <div class = "row">
+            <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
-                    <h3>Thông tin tài khoản</h3>
-                    <a href="/create/account" class="btn btn-primary">Tạo tài khoản</a>
+                    <h3>Thông tin PT</h3>
+                    <a href="/create/pt" class="btn btn-primary">Thêm PT </a>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>ID</th>
-                        <th>Tên đăng nhập</th>
-                        <th>Mật khẩu</th>
-                        <th>Loại tài khoản</th>
+                        <th>Mã PT:</th>
+                        <th>Họ và tên</th>
+                        <th>SDT</th>
+                        <th>Chuyên môn</th>
+                        <th>Kinh nghiệm</th>
+                        <th>Ngày đăng ký</th>
                     </tr>
-                    <c:forEach var="acc" items="${accounts}">
+                    <c:forEach var="pts" items="${pts}">
                         <tr>
-                            <td>${acc.account_id}</td>
-                            <td>${acc.user}</td>
-                            <td>${acc.password}</td>
-                            <td>${acc.role.name}</td>
+                            <td>${pts.pt_id}</td>
+                            <td>${pts.name}</td>
+                            <td>${pts.phoneNumber}</td>
+                            <td>${pts.specialization}</td>
+                            <td>${pts.experience_year}</td>
+                            <td>${pts.date_joined}</td>
                             <td>
-                                <a href="/update/account/${acc.account_id}" 
+                                <a href="/update/pt/${pts.pt_id}" 
                                 class="btn btn-warning mx-2">Update</a>
-                                <!-- <a href="">
-                                    <button class="btn btn-danger">Delete</button>
-                                </a> -->
-                                <a href="/delete/account/${acc.account_id}" 
+                                <a href="/delete/pt/${pts.pt_id}" 
                                 onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
-                                class="btn btn-danger">Delete</a>
-                            
-                                
-
-                            </td>
+                                class="btn btn-danger">Delete</a>                           
+                             </td>
                         </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
     </div>
-    <%@ include file="../../layout.jsp" %>
 </body>
 </html>

@@ -12,45 +12,43 @@
     
 </head>
 <body>
+    <jsp:include page = "../layout/header.jsp"/>
+    <jsp:include page = "../layout/sidebar.jsp"/>   
+    
     <div class="container mt-5">
         <div class = "row">
             <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
-                    <h3>Thông tin PT</h3>
-                    <a href="/create/pt" class="btn btn-primary">Thêm PT </a>
+                    <h3>Lịch nhân viên</h3>
+                    <a href="/create/shift" class="btn btn-primary">Tạo lịch làm </a>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>Mã PT:</th>
-                        <th>Họ và tên</th>
-                        <th>SDT</th>
-                        <th>Chuyên môn</th>
-                        <th>Kinh nghiệm</th>
-                        <th>Ngày đăng ký</th>
+                        <th>Tên nhân viên</th>
+                        <th>Ngày </th>
+                        <th>Giờ vào ca</th>
+                        <th>Giờ ra ca</th>
+
                     </tr>
-                    <c:forEach var="pts" items="${pts}">
+                    <c:forEach var="shift" items="${shifts}">
                         <tr>
-                            <td>${pts.pt_id}</td>
-                            <td>${pts.name}</td>
-                            <td>${pts.phoneNumber}</td>
-                            <td>${pts.specialization}</td>
-                            <td>${pts.experience_year}</td>
-                            <td>${pts.date_joined}</td>
+                            <td>${shift.employee.name}</td>
+                            <td>${shift.shift_date}</td>
+                            <td>${shift.start_time}</td>
+                            <td>${shift.end_time}</td>
                             <td>
-                                <a href="/update/pt/${pts.pt_id}" 
+                                <a href="/update/shift/${shift.shift_id}" 
                                 class="btn btn-warning mx-2">Update</a>
-                                <a href="/delete/pt/${pts.pt_id}" 
+                                <a href="/delete/shift/${shift.shift_id}" 
                                 onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
                                 class="btn btn-danger">Delete</a>                           
                              </td>
+
                         </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
-    </div>
-    <%@ include file="../../../../../layout.jsp" %>
-
 </body>
 </html>

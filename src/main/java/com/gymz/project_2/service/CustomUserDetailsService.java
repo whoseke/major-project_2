@@ -25,13 +25,10 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("username not found");
         }
 
-        UserDetails userDetails = User.withUsername(
-                user.getUser())
-                .password(user.getPassword())
-                .authorities(Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole().getName())))
-                .build();
-
-        return userDetails;
+        return new User(
+                user.getUser(),
+                user.getPassword(), true, true, true, true,
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole().getName())));
     }
 
 }

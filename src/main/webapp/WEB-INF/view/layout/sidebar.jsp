@@ -1,25 +1,27 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar</title>
+    <title>Menu Bar and Sidebar</title>
     <style>
         .sidebar {
+            margin-top: 7px; 
             position: fixed;
             top: 0;
             left: 0;
             height: 100%;
-            width: 300px; 
+            width: 270px; 
             background-color: #333;
             padding-top: 30px;
             color: #fff;
+            overflow-y: auto;
         }
 
         .sidebar h2 {
             text-align: center;
+            color: #fff;
         }
 
         .sidebar ul {
@@ -29,7 +31,7 @@
         }
 
         .sidebar ul li {
-            padding: 10px;
+            padding: 15px;
         }
 
         .sidebar ul li a {
@@ -38,16 +40,13 @@
         }
 
         .sidebar ul li a:hover {
-            background-color: #555;
+            background-color: blue;
         }
+
     </style>
 </head>
 <body>
     <aside class="sidebar">
-        <a href="/">
-           <h2>Trang chủ</h2>
-        </a>
-
         <ul>
             <li><a href="/info/option">Gói tập</a></li>
             <li><a href="/info/course">Khoá học</a></li>
@@ -63,13 +62,9 @@
             <li><a href="/info/payment">Thanh toán</a></li>
 
             <li><a href="/feedback">Phản hồi</a></li>
-            <li><a href="/info/account">Tài khoản</a></li>
-            
-        </ul>
-
-        <ul>
-            
+            <li><a href="/info/account">Tài khoản</a></li>            
         </ul>
     </aside>
+
 </body>
 </html>

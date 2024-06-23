@@ -12,42 +12,41 @@
     
 </head>
 <body>
+    <jsp:include page = "../layout/header.jsp"/>
+    <jsp:include page = "../layout/sidebar.jsp"/>   
+    
     <div class="container mt-5">
         <div class = "row">
             <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
-                    <h3>Lịch nhân viên</h3>
-                    <a href="/create/shift" class="btn btn-primary">Tạo lịch làm </a>
+                    <h3>Thông tin nhân viên</h3>
+                    <a href="/create/employee" class="btn btn-primary">Thêm nhân viên </a>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>Tên nhân viên</th>
-                        <th>Ngày </th>
-                        <th>Giờ vào ca</th>
-                        <th>Giờ ra ca</th>
-
+                        <th>Mã nhân viên:</th>
+                        <th>Họ và tên:</th>
+                        <th>Vị trí:</th>
+                        <th>Mức lương:</th>
                     </tr>
-                    <c:forEach var="shift" items="${shifts}">
+                    <c:forEach var="e" items="${employees}">
                         <tr>
-                            <td>${shift.employee.name}</td>
-                            <td>${shift.shift_date}</td>
-                            <td>${shift.start_time}</td>
-                            <td>${shift.end_time}</td>
+                            <td>${e.employee_id}</td>
+                            <td>${e.name}</td>
+                            <td>${e.position}</td>
+                            <td>${e.salary}</td>
                             <td>
-                                <a href="/update/shift/${shift.shift_id}" 
+                                <a href="/update/employee/${e.employee_id}" 
                                 class="btn btn-warning mx-2">Update</a>
-                                <a href="/delete/shift/${shift.shift_id}" 
+                                <a href="/delete/employee/${e.employee_id}" 
                                 onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
-                                class="btn btn-danger">Delete</a>                           
-                             </td>
-
+                                class="btn btn-danger">Delete</a>                               </td>
                         </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
-        <%@ include file="../../../../layout.jsp" %>
-
+    </div>
 </body>
 </html>

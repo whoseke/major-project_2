@@ -12,32 +12,40 @@
     
 </head>
 <body>
+    <jsp:include page = "../layout/header.jsp"/>
+    <jsp:include page = "../layout/sidebar.jsp"/>   
+    
     <div class="container mt-5">
-        <div class="row">
+        <div class = "row">
             <div class="col-md-8 offset-md-3"> 
                 <div class="d-flex justify-content-between">
-                    <h3>Thông tin đặt hàng</h3>
-                    <a href="/create/booking" class="btn btn-primary">Tạo đơn </a>
+                    <h3>Thông tin buổi tập</h3>
+                    <a href="/create/session" class="btn btn-primary">Tạo buổi tập </a>
                 </div>
                 <hr>
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>ID</th>
-                        <th>Mã hội viên</th>
                         <th>Mã buổi tập</th>
-                        <th>Ngày đăng ký</th>
+                        <th>Buổi tập</th>
+                        <th>Mã khoá học</th>
+                        <th>Mã PT</th>
+                        <th>Từ</th>
+                        <th>Đến</th>
                     </tr>
-                    <c:forEach var="b" items="${bookings}">
+                    <c:forEach var="s" items="${sessions}">
                         <tr>
-                            <td>${b.booking_id}</td>
-                            <td>${b.member.name}</td>
-                            <td>${b.session.session_Date}</td>
-                            <td>${b.booking_date}</td>
+                            <td>${s.session_id}</td>
+                            <td>${s.session_Date}</td>
+                            <td>${s.course.course_id}</td>
+                            <td>${s.pt.pt_id}</td>
+                            <td>${s.start_time}</td>
+                            <td>${s.end_time}</td>
                             <td>
-                                <a href="/update/booking/${b.booking_id}" 
+                                <a href="/update/session/${s.session_id}" 
                                 class="btn btn-warning mx-2">Update</a>
-                                <button class="btn btn-danger">Delete</button>
-
+                                <a href="/delete/session/${s.session_id}" 
+                                onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')" 
+                                class="btn btn-danger">Delete</a>                            
                             </td>
                         </tr>
                     </c:forEach>
@@ -45,7 +53,5 @@
             </div>
         </div>
     </div>
-    <%@ include file="../../../../../layout.jsp" %>
-
 </body>
 </html>
