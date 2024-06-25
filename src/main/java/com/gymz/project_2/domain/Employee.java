@@ -27,7 +27,7 @@ public class Employee {
     @Column(length = 10, nullable = false)
     private BigDecimal salary;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee", cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     List<Shift> shifts;
 
     public long getEmployee_id() {

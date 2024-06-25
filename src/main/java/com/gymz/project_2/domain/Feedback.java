@@ -1,5 +1,6 @@
 package com.gymz.project_2.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,14 +14,13 @@ public class Feedback {
     @Id
     @Column(length = 6, nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long feedback_id;
 
-    @ManyToOne
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @ManyToOne
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     @JoinColumn(name = "course_id")
     private Course course;
 

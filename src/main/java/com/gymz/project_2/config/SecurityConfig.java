@@ -18,62 +18,64 @@ import jakarta.servlet.DispatcherType;
 @EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+        @Bean
+        public PasswordEncoder passwordEncoder() {
+                return new BCryptPasswordEncoder();
+        }
 
-    @Bean
-    public UserDetailsService userDetailsService(AccountService accountService) {
-        return new CustomUserDetailsService(accountService);
-    }
+        @Bean
+        public UserDetailsService userDetailsService(AccountService accountService) {
+                return new CustomUserDetailsService(accountService);
+        }
 
-    @Bean
-    public DaoAuthenticationProvider authProvider(
-            PasswordEncoder passwordEncoder,
-            UserDetailsService userDetailsService) {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(passwordEncoder);
-        // authProvider.setHideUserNotFoundExceptions(false);
-        return authProvider;
-    }
+        @Bean
+        public DaoAuthenticationProvider authProvider(
+                        PasswordEncoder passwordEncoder,
+                        UserDetailsService userDetailsService) {
+                DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+                authProvider.setUserDetailsService(userDetailsService);
+                authProvider.setPasswordEncoder(passwordEncoder);
+                // authProvider.setHideUserNotFoundExceptions(false);
+                return authProvider;
+        }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests(authorize -> authorize
-                        .dispatcherTypeMatchers(DispatcherType.FORWARD,
-                                DispatcherType.INCLUDE)
-                        .permitAll()
+        @Bean
+        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+                http
+                                .authorizeHttpRequests(authorize -> authorize
+                                                .dispatcherTypeMatchers(DispatcherType.FORWARD,
+                                                                DispatcherType.INCLUDE)
+                                                .permitAll()
 
-                        .requestMatchers("/admin/**").hasRole("Admin")
+                                                .requestMatchers("/admin/**").hasRole("ADMIN")
 
-                        .requestMatchers("/info/**").hasRole("Employee")
+                                                .requestMatchers("/info/**").hasRole("EMPLOYEE")
 
-                        .requestMatchers("/member/**").hasRole("Member")
+                                                .requestMatchers("/member/**").hasRole("MEMBER")
 
-                        .requestMatchers("/pt/**").hasRole("pt")
+                                                .requestMatchers("/pt/**").hasRole("PT")
 
-                        .requestMatchers("/", "/login", "/image/**", "/logout")
-                        .permitAll()
+                                                .requestMatchers("/", "/login", "/image/**", "/logout", "/registry",
+                                                                "/registry-employee",
+                                                                "/registry-member", "/registry-pt")
+                                                .permitAll()
 
-                        .anyRequest().authenticated())
+                                                .anyRequest().authenticated())
 
-                .formLogin(formLogin -> formLogin
-                        .loginPage("/login")
-                        .failureUrl("/login?error")
-                        .permitAll())
-                .logout(logout -> logout
-                        .permitAll());
-        return http.build();
-    }
+                                .formLogin(form -> form
+                                                .permitAll())
+                                .logout(logout -> logout
+                                                .permitAll());
+
+                return http.build();
+        }
 }
 
 // fault config for security 6
-/*
- * .formLogin(form -> form
- * .permitAll())
- * .logout(logout -> logout
- * .permitAll());
- */
+
+// .formLogin(formLogin -> formLogin
+// .loginPage("/login")
+// .failureUrl("/login?error")
+// .permitAll())
+// .logout(logout -> logout
+// .permitAll());

@@ -3,6 +3,7 @@ package com.gymz.project_2.domain;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ public class Shift {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long shift_id;
 
-    @ManyToOne
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
     private Employee employee;
 

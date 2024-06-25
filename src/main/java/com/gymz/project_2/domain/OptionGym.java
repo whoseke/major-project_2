@@ -32,7 +32,7 @@ public class OptionGym {
         return op_id;
     }
 
-    @OneToMany(mappedBy = "op", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "op", cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     private List<Member> members;
 
     public void setOp_id(long op_id) {

@@ -25,57 +25,67 @@ public class ShiftController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("/create/shift")
+    @GetMapping("/admin/create/shift")
     public String createShift(Model model) {
         List<Employee> employee = employeeService.getAllEmployees();
 
         model.addAttribute("newShift", new Shift());
         model.addAttribute("employee", employee);
-        return "shift/create_shift";
+        return "layout/admin/shift/create_shift";
     }
 
-    @PostMapping(value = "/create/createShift")
+    @PostMapping(value = "/admin/createShift")
     public String getShift(Model model, @ModelAttribute("newShift") Shift shift) {
         this.shiftService.handleShift(shift);
-        return "redirect:/info/shift";
+        return "redirect:/admin/shift";
     }
 
-    @GetMapping("/info/shift")
+    @GetMapping("/admin/shift")
     public String showshift(Model model) {
         List<Shift> shifts = this.shiftService.getAllShift();
 
         model.addAttribute("shifts", shifts);
-        return "shift/show_shift";
+        return "layout/admin/shift/show_shift";
     }
 
-    @GetMapping("/update/shift/{id}")
+    @GetMapping("/admin/update/shift/{id}")
     public String setUpdateShift(Model model, @PathVariable long id) {
         List<Employee> employee = employeeService.getAllEmployees();
 
         Shift currentShift = this.shiftService.getShiftByID(id);
         model.addAttribute("newShift", currentShift);
         model.addAttribute("employee", employee);
-        return "shift/update_shift";
+        return "layout/admin/shift/update_shift";
     }
 
-    @PostMapping("/update/shift")
-    public String getUpdateShift(Model model, @ModelAttribute("newShift") Shift currenShift) {
+    @PostMapping("/admin/update/shift")
+    public String getUpdateShift(Model model, @ModelAttribute("newShift") Shift currentShift) {
 
-        Shift newShift = this.shiftService.getShiftByID(currenShift.getShift_id());
+        Shift newShift = this.shiftService.getShiftByID(currentShift.getShift_id());
         if (newShift != null) {
-            newShift.setEmployee(currenShift.getEmployee());
-            newShift.setShift_date(currenShift.getShift_date());
-            newShift.setStart_time(currenShift.getStart_time());
-            newShift.setEnd_time(currenShift.getEnd_time());
+            newShift.setEmployee(currentShift.getEmployee());
+            newShift.setShift_date(currentShift.getShift_date());
+            newShift.setStart_time(currentShift.getStart_time());
+            newShift.setEnd_time(currentShift.getEnd_time());
             this.shiftService.handleShift(newShift);
         }
-        return "redirect:/info/shift";
+        return "redirect:/admin/shift";
 
     }
 
-    @GetMapping("/delete/shift/{id}")
+    @GetMapping("/admin/delete/shift/{id}")
     public String deleteShift(Model model, @PathVariable long id) {
         this.shiftService.deleteShiftById(id);
-        return "redirect:/info/shift";
+        return "redirect:/admin/shift";
+    }
+
+    // shift_role
+
+    @GetMapping("/info/shift")
+    public String showshiftbyEmployee(Model model) {
+        List<Shift> shifts = this.shiftService.getAllShift();
+
+        model.addAttribute("shifts", shifts);
+        return "shift/show_shift";
     }
 }

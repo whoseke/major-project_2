@@ -91,4 +91,23 @@ public class SessionController {
         return "redirect:/info/session";
     }
 
+    // role_pt
+
+    @GetMapping("/pt/info/session")
+    public String showSessionByPt(Model model) {
+        List<Session> sessions = this.sessionService.getAllSession();
+
+        model.addAttribute("sessions", sessions);
+        return "layout/pt/session/show_session";
+    }
+
+    // role_pt
+
+    @GetMapping("/member/info/session")
+    public String showSessionByMember(Model model) {
+        List<Session> sessions = this.sessionService.getAllSession();
+
+        model.addAttribute("sessions", sessions);
+        return "layout/member/session/show_session";
+    }
 }

@@ -91,4 +91,30 @@ public class BookingController {
         return "redirect:/info/booking";
     }
 
+    // member_role
+
+    @GetMapping("/member/info/booking")
+    public String showBookingByMember(Model model) {
+        List<Booking> bookings = this.bookingService.getAllBooking();
+        model.addAttribute("bookings", bookings);
+        return "layout/member/booking/show_booking";
+    }
+
+    @GetMapping("/member/create/booking")
+    public String createBookingByMember(Model model) {
+        List<Member> member = memberService.getAllMember();
+        List<Session> session = sessionService.getAllSession();
+
+        model.addAttribute("newBooking", new Booking());
+        model.addAttribute("member", member);
+        model.addAttribute("session", session);
+
+        return "layout/member/booking/create_booking";
+    }
+
+    @PostMapping(value = "/member/create/createBooking")
+    public String getBookingByMember(Model model, @ModelAttribute("newBooking") Booking booking) {
+        this.bookingService.handleSaveBooking(booking);
+        return "redirect:/member/info/booking";
+    }
 }

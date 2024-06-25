@@ -21,49 +21,49 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("/create/employee")
+    @GetMapping("/admin/create/employee")
     public String createEmployee(Model model) {
         model.addAttribute("newEmployee", new Employee());
-        return "employee/create_employee";
+        return "layout/admin/employee/create_employee";
     }
 
-    @PostMapping(value = "/create/createEmployee")
+    @PostMapping(value = "/admin/createEmployee")
     public String getEmployee(Model model, @ModelAttribute("newEmployee") Employee employee) {
         this.employeeService.handEmployee(employee);
-        return "redirect:/info/employee";
+        return "redirect:/admin/employee";
     }
 
-    @GetMapping("/info/employee")
+    @GetMapping("/admin/employee")
     public String showEmployee(Model model) {
         List<Employee> employees = this.employeeService.getAllEmployees();
 
         model.addAttribute("employees", employees);
-        return "employee/show_employee";
+        return "layout/admin/employee/show_employee";
     }
 
-    @GetMapping("/update/employee/{id}")
+    @GetMapping("/admin/update/employee/{id}")
     public String getUpdateEmployee(Model model, @PathVariable long id) {
         Employee currentEmployee = this.employeeService.getEmployeeByID(id);
         model.addAttribute("newEmployee", currentEmployee);
-        return "employee/update_employee";
+        return "layout/admin/employee/update_employee";
     }
 
-    @PostMapping("/update/employee")
+    @PostMapping("/admin/update/employee")
     public String setUpdateEmployee(Model model, @ModelAttribute("newEmployee") Employee currentAccount) {
         Employee newEmployee = this.employeeService.getEmployeeByID(currentAccount.getEmployee_id());
         if (newEmployee != null) {
             newEmployee.setEmployee_id(currentAccount.getEmployee_id());
             newEmployee.setName(currentAccount.getName());
-            newEmployee.setPosition(currentAccount.getName());
+            newEmployee.setPosition(currentAccount.getPosition());
             newEmployee.setSalary(currentAccount.getSalary());
             this.employeeService.handEmployee(newEmployee);
         }
-        return "redirect:/info/employee";
+        return "redirect:/admin/employee";
     }
 
-    @GetMapping("/delete/employee/{id}")
+    @GetMapping("/admin/delete/employee/{id}")
     public String deleteBooking(Model model, @PathVariable long id) {
         this.employeeService.deleteEmployeeById(id);
-        return "redirect:/info/employee";
+        return "redirect:/admin/employee";
     }
 }

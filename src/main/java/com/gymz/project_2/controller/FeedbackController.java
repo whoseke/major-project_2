@@ -29,23 +29,6 @@ public class FeedbackController {
         this.courseService = courseService;
     }
 
-    @GetMapping("/create/feedback")
-    public String createFeedback(Model model) {
-        List<Member> member = memberService.getAllMember();
-        List<Course> course = courseService.getAllCourse();
-
-        model.addAttribute("course", course);
-        model.addAttribute("member", member);
-        model.addAttribute("newFeedback", new Feedback());
-        return "feedback/create_feedback";
-    }
-
-    @PostMapping(value = "/create/createFeedback")
-    public String getFeedback(Model model, @ModelAttribute("newFeedback") Feedback feedback) {
-        this.feedbackService.handleSaveFeedback(feedback);
-        return "redirect:/feedback";
-    }
-
     @GetMapping("/feedback")
     public String showFeedback(Model model) {
         List<Feedback> feedbacks = this.feedbackService.getAllFeedback();
@@ -86,4 +69,54 @@ public class FeedbackController {
         return "redirect:/info/feedback";
     }
 
+    // member_role
+    @GetMapping("/member/create/feedback")
+    public String createFeedbackbyMember(Model model) {
+        List<Member> member = memberService.getAllMember();
+        List<Course> course = courseService.getAllCourse();
+        model.addAttribute("course", course);
+        model.addAttribute("member", member);
+        model.addAttribute("newFeedback", new Feedback());
+        return "layout/member/feedback/create_feedback";
+    }
+
+    @PostMapping(value = "/member/create/createFeedback")
+    public String getFeedbackbyMember(Model model, @ModelAttribute("newFeedback") Feedback feedback) {
+        this.feedbackService.handleSaveFeedback(feedback);
+        return "redirect:/member/feedback";
+    }
+
+    @GetMapping("/member/feedback")
+    public String showFeedbackbyMember(Model model) {
+        List<Feedback> feedbacks = this.feedbackService.getAllFeedback();
+
+        model.addAttribute("feedbacks", feedbacks);
+        return "layout/member/feedback/show_feedback";
+    }
+
+    @GetMapping("/member/update/feedback/{id}")
+    public String getUpdateFeedbackbyMember(Model model, @PathVariable long id) {
+        List<Member> member = memberService.getAllMember();
+        List<Course> course = courseService.getAllCourse();
+
+        Feedback currentFeedBack = this.feedbackService.getFeedbackByID(id);
+
+        model.addAttribute("course", course);
+        model.addAttribute("member", member);
+        model.addAttribute("newFeedback", currentFeedBack);
+        return "layout/ member/feedback/update_feedback";
+    }
+
+    @PostMapping("/member/update/feedback")
+    public String getUpdateFeedbackbyMember(Model model, @ModelAttribute("newFeedback") Feedback n1) {
+        Feedback newFeedBack = this.feedbackService.getFeedbackByID(n1.getFeedback_id());
+        if (newFeedBack != null) {
+            newFeedBack.setMember(n1.getMember());
+            newFeedBack.setCourse(n1.getCourse());
+            newFeedBack.setComment(n1.getComment());
+
+            this.feedbackService.handleSaveFeedback(newFeedBack);
+        }
+        return "redirect:/member/feedback";
+    }
 }

@@ -9,7 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Pt {
@@ -33,7 +35,7 @@ public class Pt {
     @Column(nullable = false)
     private LocalDate date_joined;
 
-    @OneToMany(mappedBy = "pt", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pt", cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     private List<Session> sessions;
 
     public long getPt_id() {

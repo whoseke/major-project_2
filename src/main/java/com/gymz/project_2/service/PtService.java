@@ -30,4 +30,8 @@ public class PtService {
     public void deleteById(long id) {
         this.ptRepository.deleteById(id);
     }
+
+    public Pt getPtByUsername(String username) {
+        return this.ptRepository.findPtByAccount(username);
+    }
 }

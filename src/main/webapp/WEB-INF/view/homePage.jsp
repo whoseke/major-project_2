@@ -43,11 +43,6 @@
                             </button>
                         </li>
 
-                        <li class="nav-item">
-                            <button class="btn btn-outline-warning btn-lg mx-2" onclick="location.href=''">
-                                Tạo tài khoản
-                            </button>
-                        </li>
                     </ul>
                 </div>
 

@@ -16,4 +16,8 @@ public class HomePageController {
         return "client/login";
     }
 
+    @GetMapping("/registry")
+    public String getRegistry(Model model) {
+        return "client/registry";
+    }
 }
